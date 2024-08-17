@@ -1,0 +1,12 @@
+[user]
+	name = Minh Nguyen
+	email = minh.nguyenthanh97@gmail.com
+[credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = gpg
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[core]
+	ignoreCase = true
+	editor = nvim
