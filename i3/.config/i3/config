@@ -25,7 +25,7 @@ exec_always --no-startup-id "~/.config/polybar/launch_polybar.sh"
 bindsym Mod4+l exec "i3lock -c 000000"
 
 # auto lock the screen
-exec "xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
+exec "xautolock -detectsleep -time 30 -locker \"i3lock -c 000000\""
 
 # turn off border for all windows 
 default_border none
