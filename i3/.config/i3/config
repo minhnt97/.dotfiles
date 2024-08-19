@@ -27,12 +27,12 @@ bindsym Mod4+l exec "i3lock -c 000000"
 # auto lock the screen
 exec "xautolock -detectsleep -time 30 -locker \"i3lock -c 000000\""
 
-# turn off border for all windows 
-default_border none
-default_floating_border none
+# set border size
+default_border pixel 2
+default_floating_border pixel 2
 
-# set gaps between windows
-gaps inner 5px
+# set gap between windows
+gaps inner 2px
 gaps outer 0px
 smart_gaps inverse_outer
 

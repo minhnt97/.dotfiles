@@ -115,7 +115,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# for edp - idf
 alias getidf="export IDF_TOOLS_PATH=~/KAILOS_TAG/Frameworks/.espressif;. ~/KAILOS_TAG/Frameworks/esp-idf/export.sh"
+
+# change day & night mode
+alias day="redshift -oP -O 5400 -b 1"
+alias night="redshift -oP -O 4400 -b 1"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
