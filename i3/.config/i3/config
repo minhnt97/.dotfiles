@@ -12,11 +12,8 @@
 # set mod key use Alt (Mod1) | Win key (Mod4)
 set $mod Mod1
 
-# include our custom file (dedicated for each monitor setup)
-include  ~/.config/i3/custom.conf
-
-# reduce glitch in switching windows
-exec --no-startup-id "picom"
+# background image
+exec_always --no-startup-id "feh --bg-fill ~/.config/i3/backgrounds/warm-2.png"
 
 # start polybar to display status
 exec_always --no-startup-id "~/.config/polybar/launch_polybar.sh"
@@ -28,12 +25,12 @@ bindsym Mod4+l exec "i3lock -c 000000"
 exec "xautolock -detectsleep -time 30 -locker \"i3lock -c 000000\""
 
 # set border size
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # set gap between windows
-gaps inner 2px
-gaps outer 2px
+gaps inner 1px
+gaps outer 1px
 smart_gaps inverse_outer
 
 # Font for window titles. Will also be used by the bar unless a different font
