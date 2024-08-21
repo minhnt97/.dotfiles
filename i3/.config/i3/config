@@ -13,7 +13,7 @@
 set $mod Mod1
 
 # background image
-exec_always --no-startup-id "feh --bg-fill ~/.config/i3/backgrounds/warm-2.png"
+exec_always --no-startup-id "feh --bg-center ~/.config/i3/backgrounds/digital-art.jpg"
 
 # start polybar to display status
 exec_always --no-startup-id "~/.config/polybar/launch_polybar.sh"
