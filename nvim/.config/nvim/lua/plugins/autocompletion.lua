@@ -20,6 +20,8 @@ return {
 				"lua_ls",
 				"clangd",
 				"pyright",
+                "taplo",
+                "bashls",
 			}
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({

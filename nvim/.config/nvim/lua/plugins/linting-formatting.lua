@@ -8,6 +8,8 @@ return {
 			local null_ls = require("null-ls")
 			null_ls.setup({
 				sources = {
+                    -- prettier for many languages
+					null_ls.builtins.formatting.prettier,
 					-- lua
 					null_ls.builtins.formatting.stylua,
 					-- python

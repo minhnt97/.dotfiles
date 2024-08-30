@@ -12,7 +12,8 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "clangd",
-                    "pyright",
+                    "taplo",
+                    "bashls",
                 },
             })
         end,
@@ -25,7 +26,8 @@ return {
             -- setup LSP servers
             lspconfig.lua_ls.setup({})
             lspconfig.clangd.setup({})
-            lspconfig.pyright.setup({})
+            lspconfig.taplo.setup({})
+            lspconfig.bashls.setup({})
 
             -- mappings
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
