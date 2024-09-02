@@ -28,7 +28,7 @@
 #              "~/.config/alacritty/keybindings.toml",
 #         ]
 
-import = ["~/.config/alacritty/themes/themes/kanagawa_wave.toml"]
+import = ["~/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
 
 # shell = "<string>" | { program = "<string>", args = ["<string>",] }
 #     You can set shell.program to the path of your favorite shell, e.g. /bin/zsh. Entries in shell.args are passed as arguments to the shell.
