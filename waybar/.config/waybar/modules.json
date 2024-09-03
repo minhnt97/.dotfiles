@@ -90,7 +90,7 @@
   "custom/hyprshade": {
     "format": "",
     "tooltip-format": "Toggle Screen Shader",
-    "on-click": "hyprshade toggle"
+    "on-click": "hyprshade toggle --fallback-auto"
   },
 
   // Hypridle inhibitor
