@@ -21,3 +21,6 @@ vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
 
 -- Set truecolor
 vim.o.termguicolors = true
+
+-- No adding end of file
+vim.cmd("set nofixendofline")
