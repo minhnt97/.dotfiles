@@ -18,3 +18,6 @@ vim.keymap.set("n", "<c-h>", ":NvimTmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<c-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<c-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
+
+-- Set truecolor
+vim.o.termguicolors = true
