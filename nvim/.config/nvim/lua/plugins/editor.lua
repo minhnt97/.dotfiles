@@ -31,5 +31,9 @@ return {
     },
     {
         "sindrets/diffview.nvim",
+        config = function()
+            vim.keymap.set("n", "<leader>gio", "<cmd>DiffviewOpen<cr>")
+            vim.keymap.set("n", "<leader>gic", "<cmd>DiffviewClose<cr>")
+        end,
     },
 }

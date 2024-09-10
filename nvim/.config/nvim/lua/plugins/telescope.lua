@@ -23,11 +23,6 @@ return {
 			vim.keymap.set("n", "<leader>gr", telescope_builtin.lsp_references, {})
 			vim.keymap.set("n", "<leader>ge", telescope_builtin.diagnostics, {})
 
-			-- mappings git actions
-			vim.keymap.set("n", "<leader>gs", telescope_builtin.git_status, {})
-			vim.keymap.set("n", "<leader>gc", telescope_builtin.git_commits, {})
-			vim.keymap.set("n", "<leader>gb", telescope_builtin.git_bcommits, {})
-
 			require("telescope").setup({
 				defaults = {
 					sorting_strategy = "ascending",
