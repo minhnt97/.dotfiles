@@ -20,6 +20,7 @@ return {
 
 			-- mappings LSP actions
 			vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_document_symbols, {})
+			vim.keymap.set("n", "<leader>fa", telescope_builtin.lsp_dynamic_workspace_symbols, {})
 			vim.keymap.set("n", "<leader>gr", telescope_builtin.lsp_references, {})
 			vim.keymap.set("n", "<leader>ge", telescope_builtin.diagnostics, {})
 

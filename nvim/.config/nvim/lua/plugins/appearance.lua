@@ -8,8 +8,9 @@ return {
 			-- directly inside the plugin declaration.
 			vim.o.background = "dark"
 			vim.g.gruvbox_material_background = "light"
-			vim.g.gruvbox_material_enable_italic = true
-			vim.g.gruvbox_material_better_performance = true
+			vim.g.gruvbox_material_foreground = "mix"
+			vim.g.gruvbox_material_enable_italic = 1
+			vim.g.gruvbox_material_enable_bold = 1
 			vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
@@ -22,12 +23,19 @@ return {
 					theme = "auto",
 				},
 				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff" },
 					lualine_c = {
 						{
 							"filename",
 							path = 1, -- 1: Relative path
 						},
 					},
+
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+
+					lualine_z = { "location" },
 				},
 			})
 		end,
