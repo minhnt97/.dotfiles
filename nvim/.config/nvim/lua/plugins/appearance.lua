@@ -10,8 +10,23 @@ return {
 			vim.g.gruvbox_material_background = "light"
 			vim.g.gruvbox_material_foreground = "mix"
 			vim.g.gruvbox_material_enable_italic = 1
-			vim.g.gruvbox_material_enable_bold = 1
-			vim.cmd.colorscheme("gruvbox-material")
+			vim.g.gruvbox_material_enable_bold = 0
+			-- vim.cmd.colorscheme("gruvbox-material")
+		end,
+	},
+	{
+		"Mofiqul/vscode.nvim",
+		config = function()
+			vim.cmd.colorscheme("vscode")
+		end,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			-- vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
 	{
