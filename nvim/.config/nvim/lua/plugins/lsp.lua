@@ -1,11 +1,13 @@
 return {
 	{
+		-- manage LSP installation
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
+		-- connect mason and lspconfig
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
@@ -19,6 +21,7 @@ return {
 		end,
 	},
 	{
+		-- auto config LSPs
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")

@@ -22,5 +22,8 @@ vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
 -- Set truecolor
 vim.o.termguicolors = true
 
+-- Show cursor line 
+vim.o.cursorline = true
+
 -- No adding end of file
 vim.cmd("set nofixendofline")

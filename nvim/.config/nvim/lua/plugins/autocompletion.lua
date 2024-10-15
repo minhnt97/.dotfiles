@@ -147,6 +147,7 @@ return {
 		end,
 	},
 	{
+		-- for auto insert close pair
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
@@ -154,6 +155,7 @@ return {
 		-- this is equivalent to setup({}) function
 	},
 	{
+		-- insert doxygen
 		"paopaol/cmp-doxygen",
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
