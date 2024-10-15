@@ -4,7 +4,10 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-buffer", -- buffer source for nvim-cmp
 			"hrsh7th/cmp-path", -- path source for nvim-cmp
+			"hrsh7th/cmp-cmdline", -- path source for nvim-cmp
+			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+			"hrsh7th/cmp-nvim-lsp-document-symbol", -- display signature help for nvim-cmp
 			"hrsh7th/cmp-nvim-lsp-signature-help", -- display signature help for nvim-cmp
 			"rafamadriz/friendly-snippets", -- vs-code like snippets
 			"saadparwaiz1/cmp_luasnip", -- LuaSnip source for nvim-cmp
@@ -12,23 +15,7 @@ return {
 			"onsails/lspkind.nvim", -- add vscode-like icon to completion menu
 		},
 		config = function()
-			-- Add additional capabilities supported by nvim-cmp
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
-			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-			local servers = {
-				"lua_ls",
-				"clangd",
-				"pyright",
-                "taplo",
-                "bashls",
-			}
-			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup({
-					-- on_attach = my_custom_on_attach,
-					capabilities = capabilities,
-				})
-			end
 
 			-- luasnip setup
 			local luasnip = require("luasnip")
@@ -38,10 +25,12 @@ return {
 
 			-- nvim-cmp setup
 			local cmp = require("cmp")
+
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						luasnip.lsp_expand(args.body) -- For 'luasnip' users
+						-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
 					end,
 				},
 				view = {
@@ -49,8 +38,8 @@ return {
 					selection_order = "near_cursor",
 				},
 				window = {
-					--completion = cmp.config.window.bordered(),
-					--documentation = cmp.config.window.bordered(),
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
 				},
 				formatting = {
 					format = lspkind.cmp_format({
@@ -105,12 +94,70 @@ return {
 						end
 					end, { "i", "s" }),
 				}),
-				sources = {
-					{ name = "luasnip" },
+				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "doxygen" },
+					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
-				},
+				}, {
+					{ name = "buffer" },
+				}),
 			})
+
+			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp_document_symbol" },
+				}, {
+					{ name = "buffer" },
+				}),
+			})
+
+			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
+				}),
+				matching = { disallow_symbol_nonprefix_matching = false },
+			})
+
+			-- If you want insert `(` after select function or method item
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+			-- Add additional capabilities supported by nvim-cmp
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+			local servers = {
+				"lua_ls",
+				"bashls",
+				"clangd",
+				"pyright",
+			}
+			for _, lsp in ipairs(servers) do
+				lspconfig[lsp].setup({
+					-- on_attach = my_custom_on_attach,
+					capabilities = capabilities,
+				})
+			end
 		end,
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
+	{
+		"paopaol/cmp-doxygen",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 	},
 }
