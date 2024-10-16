@@ -17,14 +17,14 @@ return {
         {
                 "tomasiser/vim-code-dark",
                 config = function()
-                        -- vim.cmd.colorscheme("codedark")
+                        vim.cmd.colorscheme("codedark")
                 end,
         },
         {
                 "Everblush/nvim",
                 name = "everblush",
                 config = function()
-                        vim.cmd.colorscheme("everblush")
+                        -- vim.cmd.colorscheme("everblush")
                 end,
         },
         {
