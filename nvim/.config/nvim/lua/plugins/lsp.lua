@@ -36,16 +36,54 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+
+                        -- mappings for workspace manage
 			vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, {})
 			vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, {})
 			vim.keymap.set("n", "<leader>wl", function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end, {})
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
 		end,
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			local lspsaga = require("lspsaga")
+			lspsaga.setup({
+				finder = {
+					max_height = 0.4,
+					layout = "normal",
+					keys = {
+						vsplit = "v",
+						split = "s",
+					},
+				},
+				outline = {
+					win_width = 50,
+					close_after_jump = true,
+				},
+			})
+                        -- mappings for code navigations
+			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+			vim.keymap.set("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>")
+			vim.keymap.set("n", "<leader>pD", "<cmd>Lspsaga peek_type_definition<CR>")
+			vim.keymap.set("n", "<leader>gr", "<cmd>Lspsaga finder ref+imp<CR>", {}) -- find references + implementation
+			vim.keymap.set("n", "<leader>gR", "<cmd>Lspsaga finder def+ref+imp<CR>", {}) -- find definition + references + implementation
+			vim.keymap.set("n", "<leader>oo", "<cmd>Lspsaga outline<CR>", {})
+
+                        -- mappings for diagnostics
+			vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
+			vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
+			vim.keymap.set("n", "<leader>ge", "<cmd>Lspsaga show_buf_diagnostics<CR>", {})
+			vim.keymap.set("n", "<leader>gE", "<cmd>Lspsaga show_workspace_diagnostics<CR>", {})
+
+                        -- mappings for changes using LSP
+			vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename <CR>", {})
+			vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", {})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 	},
 }
