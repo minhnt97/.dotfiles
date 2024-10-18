@@ -191,7 +191,7 @@ dynamic_padding = true
 #         Linux/BSD: { family = "monospace", style = "Regular" }
 #         Windows:   { family = "Consolas",  style = "Regular" }
 #         macOS:     { family = "Menlo",     style = "Regular" }
-normal = { family = "0xProto Nerd Font Propo", style = "Regular" }
+normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
 
 # bold = { family = "<string>", style = "<string>" }
 #     If the family is not specified, it will fall back to the value specified for the normal font.
