@@ -84,8 +84,8 @@ return {
 			-- mappings for diagnostics
 			vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 			vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
-			vim.keymap.set("n", "<leader>ge", "<cmd>Lspsaga show_buf_diagnostics<CR>", {})
-			vim.keymap.set("n", "<leader>gE", "<cmd>Lspsaga show_workspace_diagnostics<CR>", {})
+			vim.keymap.set("n", "<leader>ge", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
+			vim.keymap.set("n", "<leader>gE", "<cmd>Lspsaga show_buf_diagnostics<CR>", {})
 
 			-- mappings for changes using LSP
 			vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename <CR>", {})

@@ -1,30 +1,8 @@
 return {
         {
-                "sainnhe/gruvbox-material",
-                lazy = false,
-                priority = 1000,
-                config = function()
-                        -- Optionally configure and load the colorscheme
-                        -- directly inside the plugin declaration.
-                        vim.o.background = "dark"
-                        vim.g.gruvbox_material_background = "light"
-                        vim.g.gruvbox_material_foreground = "mix"
-                        vim.g.gruvbox_material_enable_italic = 1
-                        vim.g.gruvbox_material_enable_bold = 0
-                        -- vim.cmd.colorscheme("gruvbox-material")
-                end,
-        },
-        {
                 "tomasiser/vim-code-dark",
                 config = function()
                         vim.cmd.colorscheme("codedark")
-                end,
-        },
-        {
-                "Everblush/nvim",
-                name = "everblush",
-                config = function()
-                        -- vim.cmd.colorscheme("everblush")
                 end,
         },
         {
@@ -66,6 +44,7 @@ return {
                 },
         },
         {
+                -- display dashboard when nvim starts
                 "nvimdev/dashboard-nvim",
                 event = "VimEnter",
                 config = function()
