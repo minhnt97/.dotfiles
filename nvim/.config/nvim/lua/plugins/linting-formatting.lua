@@ -1,6 +1,9 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			-- mappings
 			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})

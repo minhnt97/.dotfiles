@@ -16,6 +16,7 @@ return {
 					"bashls",
 					"clangd",
 					"pyright",
+					"cmake",
 				},
 			})
 		end,
@@ -31,69 +32,65 @@ return {
 			lspconfig.bashls.setup({})
 			lspconfig.clangd.setup({})
 			lspconfig.pyright.setup({})
+			lspconfig.cmake.setup({})
 
 			-- mappings for code navigations
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
-
-			-- mappings for workspace manage
-			vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, {})
-			vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, {})
-			vim.keymap.set("n", "<leader>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, {})
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
 	{
-		"nvimdev/lspsaga.nvim",
-		config = function()
-			local lspsaga = require("lspsaga")
-			lspsaga.setup({
-				definition = {
-					width = 0.6,
-					height = 0.6,
-					keys = {
-						vsplit = "<C-c>v",
-						split = "<C-c>s",
+		-- diagnostics navigate
+		"folke/trouble.nvim",
+		opts = {
+			modes = {
+				lsp_base = {
+					params = {
+						include_current = true,
 					},
 				},
-				finder = {
-					max_height = 0.4,
-					left_width = 0.35,
-					right_width = 0.65,
-					layout = "normal",
-					keys = {
-						vsplit = "v",
-						split = "s",
-					},
-				},
-				outline = {
-					win_width = 60,
-					close_after_jump = true,
-				},
-			})
-			-- mappings for code navigations
-			vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", {})
-			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", {})
-			vim.keymap.set("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", {})
-			vim.keymap.set("n", "<leader>pD", "<cmd>Lspsaga peek_type_definition<CR>", {})
-			vim.keymap.set("n", "<leader>gr", "<cmd>Lspsaga finder ref+imp<CR>", {}) -- find references + implementation
-			vim.keymap.set("n", "<leader>gR", "<cmd>Lspsaga finder def+ref+imp<CR>", {}) -- find definition + references + implementation
-			vim.keymap.set("n", "<leader>oo", "<cmd>Lspsaga outline<CR>", {})
-
-			-- mappings for diagnostics
-			vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
-			vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {})
-			vim.keymap.set("n", "<leader>ge", "<cmd>Lspsaga show_line_diagnostics<CR>", {})
-			vim.keymap.set("n", "<leader>gE", "<cmd>Lspsaga show_buf_diagnostics<CR>", {})
-
-			-- mappings for changes using LSP
-			vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename <CR>", {})
-			vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", {})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
+			},
+		}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>ge",
+				"<cmd>Trouble diagnostics toggle focus=true<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>gE",
+				"<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>gr",
+				"<cmd>Trouble lsp_references toggle focus=true win.position=bottom<cr>",
+				desc = "LSP references (Trouble)",
+			},
+			{
+				"<leader>xl",
+				"<cmd>Trouble loclist toggle focus=true<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xq",
+				"<cmd>Trouble qflist toggle focus=true<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
 		},
+	},
+	{
+		-- prettier diagnostics display
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy", -- Or `LspAttach`
+		config = function()
+			vim.diagnostic.config({ virtual_text = false })
+			require("tiny-inline-diagnostic").setup()
+		end,
 	},
 }
