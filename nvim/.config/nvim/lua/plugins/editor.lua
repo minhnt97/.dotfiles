@@ -39,8 +39,8 @@ return {
 		-- view git diff
 		"sindrets/diffview.nvim",
 		config = function()
-			vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
-			vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
+			vim.keymap.set("n", "<leader>gs", "<cmd>DiffviewOpen<cr>")
+			vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<cr>")
 			require("diffview").setup({
 				enhanced_diff_hl = true,
 				view = {
