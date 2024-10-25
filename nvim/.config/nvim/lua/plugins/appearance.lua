@@ -8,7 +8,7 @@ return {
 			vim.g.sonokai_disable_italic_comment = 1
 			vim.g.sonokai_dim_inactive_windows = 1
 			vim.g.sonokai_inlay_hints_background = "dimmed"
-			vim.g.sonokai_style = "espresso"
+			vim.g.sonokai_style = "shusia"
 			-- vim.cmd.colorscheme("sonokai")
 		end,
 	},

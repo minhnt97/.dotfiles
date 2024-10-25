@@ -14,6 +14,7 @@
 # GENERAL
 #################################################
 
+[general]
 # This section documents the root level of the configuration file.
 
 # import = ["<string>",]
@@ -39,7 +40,7 @@ import = ["~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"]
 #         [shell]
 #         program = "/bin/zsh"
 #         args = ["-l"]
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 
 # working_directory = "<string>" | "None"
@@ -191,7 +192,7 @@ dynamic_padding = true
 #         Linux/BSD: { family = "monospace", style = "Regular" }
 #         Windows:   { family = "Consolas",  style = "Regular" }
 #         macOS:     { family = "Menlo",     style = "Regular" }
-normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
+normal = { family = "RobotoMono Nerd Font Mono", style = "Regular" }
 
 # bold = { family = "<string>", style = "<string>" }
 #     If the family is not specified, it will fall back to the value specified for the normal font.
