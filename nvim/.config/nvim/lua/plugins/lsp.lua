@@ -45,6 +45,9 @@ return {
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
 			vim.keymap.set("n", "<leader>ge", vim.diagnostic.setqflist, {})
+			vim.keymap.set("n", "<leader>gh", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+			end, {})
 		end,
 	},
 	{
