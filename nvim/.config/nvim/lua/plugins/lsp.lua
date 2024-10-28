@@ -48,7 +48,7 @@ return {
 		config = function()
 			-- mappings for code navigations
 			vim.keymap.set("n", "gd", "<cmd>Glance definitions<CR>", {})
-			vim.keymap.set("n", "gt", "<cmd>Glance type_definitions<CR>", {})
+			vim.keymap.set("n", "<leader>gt", "<cmd>Glance type_definitions<CR>", {})
 			vim.keymap.set("n", "<leader>gr", "<cmd>Glance references<CR>", {})
 			vim.keymap.set("n", "gi", "<cmd>Glance implementations<CR>", {})
 
