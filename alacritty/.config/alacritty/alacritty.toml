@@ -192,7 +192,7 @@ dynamic_padding = true
 #         Linux/BSD: { family = "monospace", style = "Regular" }
 #         Windows:   { family = "Consolas",  style = "Regular" }
 #         macOS:     { family = "Menlo",     style = "Regular" }
-normal = { family = "RobotoMono Nerd Font Mono", style = "Regular" }
+normal = { family = "CodeNewRoman Nerd Font Mono", style = "Regular" }
 
 # bold = { family = "<string>", style = "<string>" }
 #     If the family is not specified, it will fall back to the value specified for the normal font.
@@ -209,7 +209,7 @@ normal = { family = "RobotoMono Nerd Font Mono", style = "Regular" }
 # size = <float>
 #     Font size in points.
 #     Default: 11.25
-size = 12
+size = 12.5
 
 # offset = { x = <integer>, y = <integer> }
 #     Offset is the extra space around each character. y can be thought of as modifying the line spacing, and x as modifying the letter spacing.
