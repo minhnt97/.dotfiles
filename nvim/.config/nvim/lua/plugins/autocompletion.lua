@@ -96,7 +96,6 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "doxygen" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
 				}, {
@@ -156,11 +155,13 @@ return {
 		-- this is equivalent to setup({}) function
 	},
 	{
-		-- insert doxygen
-		"paopaol/cmp-doxygen",
-		requires = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
+		"danymat/neogen",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		-- version = "*"
+		config = function()
+			vim.keymap.set("n", "<leader>nf", require("neogen").generate, {})
+			require("neogen").setup({})
+		end,
 	},
 }

@@ -34,6 +34,9 @@ return {
 			lspconfig.pyright.setup({})
 			lspconfig.cmake.setup({})
 
+			-- disable diagnostics display to use tiny line
+			vim.diagnostic.config({ virtual_text = false })
+
 			-- mappings for LSP display
 			vim.keymap.set("n", "<leader>gh", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -59,7 +62,7 @@ return {
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			-- mappings for code navigations
-			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", {})
+			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", {})
 
 			-- mappings for code actions
 			vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", {})
@@ -70,7 +73,11 @@ return {
 			vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {})
 			vim.keymap.set("n", "<leader>ge", "<cmd>:Lspsaga show_workspace_diagnostics ++float<CR>", {})
 			vim.keymap.set("n", "<leader>gE", "<cmd>:Lspsaga show_buf_diagnostics ++float<CR>", {})
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+			})
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter", -- optional
@@ -82,8 +89,11 @@ return {
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "LspAttach", -- Or `LspAttach`
 		config = function()
-			vim.diagnostic.config({ virtual_text = false })
-			require("tiny-inline-diagnostic").setup()
+			require("tiny-inline-diagnostic").setup({
+				options = {
+					throttle = 200,
+				},
+			})
 		end,
 	},
 }
