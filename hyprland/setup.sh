@@ -6,3 +6,6 @@ source rofi/setup.sh
 source wal/setup.sh
 source waybar/setup.sh
 source wlogout/setup.sh
+
+# stow hyprland
+stow -v hyprland
