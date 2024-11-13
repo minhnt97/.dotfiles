@@ -62,6 +62,9 @@ return {
                 end,
         },
         {
+                "f-person/git-blame.nvim",
+        },
+        {
                 -- auto remove search highlights
                 "nvimdev/hlsearch.nvim",
                 event = "BufRead",

@@ -1,8 +1,0 @@
-[[shades]]
-name = "blue-light-day"
-default = true
-
-[[shades]]
-name = "blue-light-night"
-start_time = 15:00:00
-end_time = 10:00:00

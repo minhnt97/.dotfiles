@@ -2,26 +2,8 @@
 
 echo ":: Start setup neovim ..."
 
-# install cmake & make 
-sudo pacman -S cmake make
-
-# install gcc
-sudo pacman -S gcc
-
-# install npm
-sudo pacman -S npm
-
-# install python
-sudo pacman -S python
-
-# install luarocks
-sudo pacman -S luarocks
-
-# install fzf & ripgrep
-sudo pacman -S fzf ripgrep
-
-# install & stow neovim
-sudo pacman -S neovim
+# install necessary apps
+sudo pacman -S cmake make gcc npm python luarocks fzf ripgrep neovim
  
 stow -v nvim
 
