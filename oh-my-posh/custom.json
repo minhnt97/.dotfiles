@@ -95,7 +95,12 @@
         {
           "foreground": "#61AFEF",
           "style": "plain",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ end }} ",
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "template": " {{ if .Venv }}({{ .Venv }}){{ end }} ",
           "type": "python"
         }
       ],
