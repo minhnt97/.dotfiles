@@ -15,8 +15,6 @@ return {
 			"onsails/lspkind.nvim", -- add vscode-like icon to completion menu
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-
 			-- luasnip setup
 			local luasnip = require("luasnip")
 
@@ -127,23 +125,6 @@ return {
 			-- If you want insert `(` after select function or method item
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-			-- Add additional capabilities supported by nvim-cmp
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-			local servers = {
-				"lua_ls",
-				"bashls",
-				"clangd",
-				"pyright",
-				"cmake",
-			}
-			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup({
-					-- on_attach = my_custom_on_attach,
-					capabilities = capabilities,
-				})
-			end
 		end,
 	},
 	{

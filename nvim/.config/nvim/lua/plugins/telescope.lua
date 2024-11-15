@@ -97,7 +97,7 @@ return {
 						require("telescope.themes").get_dropdown({}),
 					},
 					file_browser = {
-						theme = "ivy",
+						-- theme = "ivy",
 					},
 					live_grep_args = {
 						auto_quoting = true, -- enable/disable auto-quoting

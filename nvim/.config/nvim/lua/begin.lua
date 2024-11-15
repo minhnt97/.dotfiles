@@ -19,10 +19,7 @@ vim.keymap.set("n", "<c-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<c-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
 
--- Set truecolor
-vim.o.termguicolors = true
-
--- Show cursor line 
+-- Show cursor line
 vim.o.cursorline = true
 
 -- No adding end of file

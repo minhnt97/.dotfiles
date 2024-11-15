@@ -1,7 +1,6 @@
 # -----------------------------------------------------
 # CUSTOMIZATION
 # -----------------------------------------------------
-POSH=agnoster
 
 # -----------------------------------------------------
 # oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -43,7 +42,6 @@ setopt appendhistory
 # -----------------------------------------------------
 # Prompt
 # -----------------------------------------------------
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # Shipped Theme
 eval "$(oh-my-posh init zsh --config ~/.dotfiles/oh-my-posh/custom.json)"
