@@ -36,35 +36,6 @@ return {
 		end,
 	},
 	{
-		-- view git diff
-		"sindrets/diffview.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>gs", "<cmd>DiffviewOpen<cr>")
-			vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<cr>")
-			require("diffview").setup({
-				enhanced_diff_hl = true,
-				view = {
-					default = {
-						-- Config for changed files, and staged files in diff views.
-						layout = "diff2_horizontal",
-						disable_diagnostics = true,
-					},
-				},
-				file_panel = {
-					win_config = { -- See |diffview-config-win_config|
-						type = "split",
-						position = "bottom",
-						height = 15,
-						win_opts = {},
-					},
-				},
-			})
-		end,
-	},
-	{
-		"f-person/git-blame.nvim",
-	},
-	{
 		-- auto remove search highlights
 		"nvimdev/hlsearch.nvim",
 		event = "BufRead",
