@@ -18,20 +18,23 @@ return {
 		end,
 	},
 	{
-		-- smart window resize
-		"mrjones2014/smart-splits.nvim",
+		"anuvyklack/windows.nvim",
+		dependencies = {
+			"anuvyklack/middleclass",
+			"anuvyklack/animation.nvim",
+		},
 		config = function()
-			vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-			vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-			vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-			vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+			vim.o.winwidth = 10
+			vim.o.winminwidth = 10
+			vim.o.equalalways = false
+			require("windows").setup()
 		end,
 	},
 	{
 		-- view undo tree
 		"mbbill/undotree",
 		config = function()
-			vim.g.undotree_WindowLayout = 2
+			vim.g.undotree_WindowLayout = 1
 			vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 		end,
 	},

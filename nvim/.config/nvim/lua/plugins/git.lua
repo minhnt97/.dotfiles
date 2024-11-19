@@ -47,10 +47,6 @@ return {
 						gitsigns.blame_line({ full = true })
 					end)
 					map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-					map("n", "<leader>hd", gitsigns.diffthis)
-					map("n", "<leader>hD", function()
-						gitsigns.diffthis("~")
-					end)
 					map("n", "<leader>td", gitsigns.toggle_deleted)
 
 					-- Text object
@@ -111,7 +107,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader>gl",
+				"<leader>gg",
 				function()
 					require("gitgraph").draw({}, { all = true, max_count = 5000 })
 				end,
