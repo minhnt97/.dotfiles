@@ -44,7 +44,7 @@ return {
 		-- view undo tree
 		"mbbill/undotree",
 		config = function()
-			vim.g.undotree_WindowLayout = 1
+			vim.g.undotree_WindowLayout = 2
 			vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 		end,
 	},
@@ -101,6 +101,12 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			require("hardtime").setup()
+		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
 		end,
 	},
 }
