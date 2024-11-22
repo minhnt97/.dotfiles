@@ -71,14 +71,17 @@ return {
 			-- setup everything
 			telescope.setup({
 				defaults = {
-					sorting_strategy = "ascending",
-					layout_strategy = "vertical",
+					sorting_strategy = "descending",
+					layout_strategy = "flex",
 					layout_config = {
-						horizontal = {
-							prompt_position = "top",
-						},
-						vertical = {
-							prompt_position = "bottom",
+						flex = {
+							flip_columns = 200,
+							horizontal = {
+								prompt_position = "bottom",
+							},
+							vertical = {
+								prompt_position = "bottom",
+							},
 						},
 					},
 				},
