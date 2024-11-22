@@ -88,16 +88,4 @@ return {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 	},
-	{
-		-- prettier diagnostics display
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "LspAttach", -- Or `LspAttach`
-		config = function()
-			require("tiny-inline-diagnostic").setup({
-				options = {
-					throttle = 200,
-				},
-			})
-		end,
-	},
 }

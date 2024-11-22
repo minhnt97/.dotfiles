@@ -1,5 +1,6 @@
 return {
 	{
+		-- working with hunks
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup({
@@ -30,24 +31,30 @@ return {
 						end
 					end)
 
-					-- Actions
+					-- Stage/unstage hunk & buffer
 					map("n", "<leader>hs", gitsigns.stage_hunk)
-					map("n", "<leader>hr", gitsigns.reset_hunk)
+					map("n", "<leader>hu", gitsigns.undo_stage_hunk)
 					map("v", "<leader>hs", function()
 						gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 					end)
+					map("n", "<leader>hS", gitsigns.stage_buffer)
+
+					-- Reset hunk & buffer
+					map("n", "<leader>hr", gitsigns.reset_hunk)
 					map("v", "<leader>hr", function()
 						gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 					end)
-					map("n", "<leader>hS", gitsigns.stage_buffer)
-					map("n", "<leader>hu", gitsigns.undo_stage_hunk)
 					map("n", "<leader>hR", gitsigns.reset_buffer)
+
+					-- Compare hunks , deleted
 					map("n", "<leader>hp", gitsigns.preview_hunk)
+					map("n", "<leader>td", gitsigns.toggle_deleted)
+
+					-- Blame
+					map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
 					map("n", "<leader>hb", function()
 						gitsigns.blame_line({ full = true })
 					end)
-					map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-					map("n", "<leader>td", gitsigns.toggle_deleted)
 
 					-- Text object
 					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
@@ -82,37 +89,18 @@ return {
 		end,
 	},
 	{
-		"isakbm/gitgraph.nvim",
-		opts = {
-			symbols = {
-				merge_commit = "M",
-				commit = "*",
-			},
-			format = {
-				timestamp = "%H:%M:%S %d-%m-%Y",
-				fields = { "hash", "timestamp", "author", "branch_name", "tag" },
-			},
-			hooks = {
-				-- Check diff of a commit
-				on_select_commit = function(commit)
-					vim.notify("DiffviewOpen " .. commit.hash .. "^!")
-					vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
-				end,
-				-- Check diff from commit a -> commit b
-				on_select_range_commit = function(from, to)
-					vim.notify("DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
-					vim.cmd(":DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
-				end,
-			},
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+
+			-- Only one of these is needed.
+			"nvim-telescope/telescope.nvim", -- optional
 		},
-		keys = {
-			{
-				"<leader>gg",
-				function()
-					require("gitgraph").draw({}, { all = true, max_count = 5000 })
-				end,
-				desc = "GitGraph - Draw",
-			},
-		},
+		config = function()
+			require("neogit").setup({
+				graph_style = "kitty",
+			})
+		end,
 	},
 }

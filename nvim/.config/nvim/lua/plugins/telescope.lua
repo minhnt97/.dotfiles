@@ -16,6 +16,14 @@ return {
 			},
 			"nvim-telescope/telescope-ui-select.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-telescope/telescope-dap.nvim",
+			{
+				"aaronhallaert/advanced-git-search.nvim",
+				cmd = { "AdvancedGitSearch" },
+				dependencies = {
+					"sindrets/diffview.nvim",
+				},
+			},
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -31,7 +39,7 @@ return {
 				})
 			end, {})
 			vim.keymap.set("n", "<leader>fe", function()
-				require("telescope").extensions.file_browser.file_browser()
+				telescope.extensions.file_browser.file_browser()
 			end, {})
 			vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fo", telescope_builtin.oldfiles, {})
@@ -55,14 +63,22 @@ return {
 			vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_document_symbols, {})
 			vim.keymap.set("n", "<leader>fa", telescope_builtin.lsp_dynamic_workspace_symbols, {})
 
+			-- mappings for git
+			vim.keymap.set("n", "<leader>fc", function()
+				telescope.extensions.advanced_git_search.diff_commit_file()
+			end, {})
+
 			-- setup everything
 			telescope.setup({
 				defaults = {
 					sorting_strategy = "ascending",
 					layout_strategy = "vertical",
 					layout_config = {
-						vertical = {
+						horizontal = {
 							prompt_position = "top",
+						},
+						vertical = {
+							prompt_position = "bottom",
 						},
 					},
 				},
@@ -96,8 +112,9 @@ return {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
-					file_browser = {
-						-- theme = "ivy",
+					file_browser = {},
+					advanced_git_search = {
+						diff_plugin = "diffview",
 					},
 					live_grep_args = {
 						auto_quoting = true, -- enable/disable auto-quoting
@@ -125,6 +142,8 @@ return {
 			telescope.load_extension("live_grep_args")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("file_browser")
+			telescope.load_extension("dap")
+			telescope.load_extension("advanced_git_search")
 		end,
 	},
 }

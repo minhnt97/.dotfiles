@@ -18,6 +18,16 @@ return {
 		end,
 	},
 	{
+		-- manual sane window resize
+		"mrjones2014/smart-splits.nvim",
+		config = function()
+			vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+			vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+			vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+			vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+		end,
+	},
+	{
 		-- auto resize windows with animation
 		"anuvyklack/windows.nvim",
 		dependencies = {
@@ -34,8 +44,6 @@ return {
 			end
 
 			vim.keymap.set("n", "<C-w>z", cmd("WindowsMaximize"))
-			vim.keymap.set("n", "<C-w>_", cmd("WindowsMaximizeVertically"))
-			vim.keymap.set("n", "<C-w>|", cmd("WindowsMaximizeHorizontally"))
 			vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))
 			require("windows").setup()
 		end,

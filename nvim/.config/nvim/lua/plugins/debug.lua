@@ -18,12 +18,6 @@ return {
 			vim.keymap.set("n", "<Leader>dr", function()
 				dap.restart()
 			end)
-			vim.keymap.set("n", "<Leader>dl", function()
-				dap.run_last()
-			end)
-			vim.keymap.set("n", "<Leader>dx", function()
-				dap.terminate()
-			end)
 
 			-- mappings for debug actions
 			vim.keymap.set("n", "<Leader>di", function()
@@ -57,10 +51,42 @@ return {
 			vim.keymap.set("n", "<Leader>dk", function()
 				dapui.eval()
 			end)
+			vim.keymap.set("n", "<Leader>ds", function()
+				dapui.float_element("scopes", {
+					enter = true,
+				})
+			end)
+			vim.keymap.set("n", "<Leader>df", function()
+				dapui.float_element("stacks", {
+					enter = true,
+				})
+			end)
+			vim.keymap.set("n", "<Leader>dw", function()
+				dapui.float_element("watches", {
+					enter = true,
+				})
+			end)
 			vim.keymap.set("n", "<Leader>dh", "<cmd>DapVirtualTextToggle<CR>")
 
 			-- setup UI default layouts
-			dapui.setup({})
+			dapui.setup({
+				layouts = {
+					{
+						elements = {
+							{
+								id = "repl",
+								size = 0.5,
+							},
+							{
+								id = "console",
+								size = 0.5,
+							},
+						},
+						position = "bottom",
+						size = 15,
+					},
+				},
+			})
 			require("nvim-dap-virtual-text").setup()
 		end,
 	},
