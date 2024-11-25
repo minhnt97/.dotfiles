@@ -66,10 +66,9 @@ return {
 		-- view git diff
 		"sindrets/diffview.nvim",
 		config = function()
-			vim.keymap.set("n", "<leader>gs", "<cmd>DiffviewOpen<cr>")
-			vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<cr>")
+			vim.opt.fillchars:append({ diff = "╱" })
 			require("diffview").setup({
-				enhanced_diff_hl = true,
+				enhanced_diff_hl = false,
 				view = {
 					default = {
 						-- Config for changed files, and staged files in diff views.
@@ -89,6 +88,7 @@ return {
 		end,
 	},
 	{
+		-- enhanced control of git
 		"NeogitOrg/neogit",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
@@ -98,6 +98,7 @@ return {
 			"nvim-telescope/telescope.nvim", -- optional
 		},
 		config = function()
+			vim.keymap.set("n", "<leader>ng", "<cmd>Neogit<cr>")
 			require("neogit").setup({
 				graph_style = "kitty",
 			})

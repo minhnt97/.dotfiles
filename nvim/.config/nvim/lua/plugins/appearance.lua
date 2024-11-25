@@ -1,17 +1,5 @@
 return {
 	{
-		"sainnhe/sonokai",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.g.sonokai_enable_italic = false
-			vim.g.sonokai_disable_italic_comment = 1
-			vim.g.sonokai_dim_inactive_windows = 1
-			vim.g.sonokai_inlay_hints_background = "none"
-			vim.g.sonokai_style = "shusia"
-		end,
-	},
-	{
 		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
@@ -22,6 +10,7 @@ return {
 			vim.g.gruvbox_material_disable_italic_comment = 1
 			vim.g.gruvbox_material_dim_inactive_windows = 1
 			vim.g.gruvbox_material_inlay_hints_background = "none"
+			vim.g.gruvbox_material_ui_contrast = "high"
 			vim.g.gruvbox_material_background = "hard"
 			vim.g.gruvbox_material_foreground = "material"
 		end,
