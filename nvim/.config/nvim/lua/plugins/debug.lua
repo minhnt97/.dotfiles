@@ -116,6 +116,14 @@ return {
 				},
 			})
 			require("nvim-dap-virtual-text").setup()
+
+			-- setup debug adapters
+			require("dap").adapters.cppdbg = {
+				id = "cppdbg",
+				type = "executable",
+				command = os.getenv("HOME")
+					.. "/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+			}
 		end,
 	},
 	{
