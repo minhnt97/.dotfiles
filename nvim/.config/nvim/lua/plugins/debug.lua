@@ -33,8 +33,8 @@ return {
 				dap.step_over()
 			end)
 
-			-- mappings for UI
-			vim.keymap.set("n", "<Leader>du", function()
+			-- mappings for console
+			vim.keymap.set("n", "<Leader>dt", function()
 				dapui.toggle()
 			end)
 
@@ -50,7 +50,7 @@ return {
 				dap.clear_breakpoints()
 			end)
 
-			-- mappings for watch related actions
+			-- change mappings during debug (hover)
 			local api = vim.api
 			local keymap_restore = {}
 			dap.listeners.after["event_initialized"]["me"] = function()
@@ -63,7 +63,12 @@ return {
 						end
 					end
 				end
-				api.nvim_set_keymap("n", "K", '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+				api.nvim_set_keymap(
+					"n",
+					"K",
+					'<Cmd>lua require("dapui").eval(nil, {enter=true})<CR>',
+					{ silent = true }
+				)
 			end
 
 			dap.listeners.after["event_terminated"]["me"] = function()
@@ -79,6 +84,7 @@ return {
 				keymap_restore = {}
 			end
 
+			-- mappings for watch related actions
 			vim.keymap.set("n", "<Leader>ds", function()
 				dapui.float_element("scopes", {
 					enter = true,
@@ -102,11 +108,11 @@ return {
 					{
 						elements = {
 							{
-								id = "repl",
+								id = "console",
 								size = 0.5,
 							},
 							{
-								id = "console",
+								id = "repl",
 								size = 0.5,
 							},
 						},
