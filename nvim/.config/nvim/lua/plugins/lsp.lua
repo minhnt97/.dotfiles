@@ -17,6 +17,7 @@ return {
 				"pyright",
 				"cmake",
 				"clangd",
+				"biome",
 			}
 
 			-- install mason

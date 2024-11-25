@@ -19,6 +19,12 @@ vim.keymap.set("n", "<c-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<c-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
 
+-- Navigate in terminal mode
+vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-h>", {})
+vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-j>", {})
+vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-k>", {})
+vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-l>", {})
+
 -- Show cursor line
 vim.o.cursorline = true
 
