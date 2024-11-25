@@ -118,4 +118,5 @@ return {
 			require("Comment").setup()
 		end,
 	},
+	{ "LunarVim/bigfile.nvim" },
 }
