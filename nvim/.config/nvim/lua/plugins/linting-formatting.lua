@@ -1,23 +1,15 @@
 return {
 	{
-		"nvimtools/none-ls.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
+		"stevearc/conform.nvim",
 		config = function()
-			-- mappings
-			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-
-			local null_ls = require("null-ls")
-			null_ls.setup({
-				sources = {
-					-- prettier for many languages
-					null_ls.builtins.formatting.prettier,
-					-- lua
-					null_ls.builtins.formatting.stylua,
-					-- python
-					null_ls.builtins.formatting.isort,
-					null_ls.builtins.formatting.black,
+			local conform = require("conform")
+			vim.keymap.set("n", "<leader>gf", conform.format, {})
+			conform.setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					-- Conform will run multiple formatters sequentially
+					python = { "isort", "black" },
+					json = { "prettierd", "prettier", stop_after_first = true },
 				},
 			})
 		end,
