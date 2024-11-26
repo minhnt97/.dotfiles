@@ -132,7 +132,8 @@ return {
 		end,
 		init = function()
 			vim.g.mkdp_auto_start = 0
-			vim.g.mkdp_auto_close = 1
+			vim.g.mkdp_auto_close = 0
+			vim.g.mkdp_combine_preview = 1
 			vim.g.mkdp_command_for_global = 1
 			vim.g.mkdp_filetypes = { "markdown", "puml" }
 			vim.keymap.set("n", "<leader>p", "<cmd>MarkdownPreviewToggle<cr>", {})
