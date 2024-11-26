@@ -118,5 +118,25 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	{ "LunarVim/bigfile.nvim" },
+	{
+		-- disable plugins in big files
+		"LunarVim/bigfile.nvim",
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		lazy = false,
+		build = function()
+			require("lazy").load({ plugins = { "markdown-preview.nvim" } })
+			vim.fn["mkdp#util#install"]()
+		end,
+		init = function()
+			vim.g.mkdp_auto_start = 0
+			vim.g.mkdp_auto_close = 1
+			vim.g.mkdp_command_for_global = 1
+			vim.g.mkdp_filetypes = { "markdown", "puml" }
+			vim.keymap.set("n", "<leader>p", "<cmd>MarkdownPreviewToggle<cr>", {})
+		end,
+		ft = { "markdown" },
+	},
 }
