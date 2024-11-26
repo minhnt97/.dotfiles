@@ -71,7 +71,7 @@ return {
 			-- setup everything
 			telescope.setup({
 				defaults = {
-					sorting_strategy = "descending",
+					sorting_strategy = "ascending",
 					layout_strategy = "flex",
 					layout_config = {
 						flex = {
