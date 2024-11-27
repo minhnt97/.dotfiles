@@ -9,8 +9,8 @@ return {
 		},
 		config = function()
 			-- mappings
-			vim.keymap.set("n", "<leader>ef", ":Neotree toggle current reveal_force_cwd<cr>", {})
-			vim.keymap.set("n", "<leader>el", ":Neotree toggle reveal left<cr>", {})
+			vim.keymap.set("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", {})
+			vim.keymap.set("n", "<leader>el", ":Neotree toggle left reveal_force_cwd <cr>", {})
 
 			require("neo-tree").setup({})
 		end,

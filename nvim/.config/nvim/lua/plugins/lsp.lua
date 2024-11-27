@@ -46,6 +46,7 @@ return {
 
 			-- disable diagnostics display to use tiny line
 			vim.diagnostic.config({ virtual_text = false })
+			vim.diagnostic.config({ virtual_text = false })
 
 			-- mappings for LSP display
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

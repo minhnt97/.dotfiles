@@ -49,7 +49,7 @@ return {
 		end,
 	},
 	{
-		-- view undo tree
+		-- undo tree
 		"mbbill/undotree",
 		config = function()
 			vim.g.undotree_WindowLayout = 2
@@ -63,83 +63,6 @@ return {
 		event = "BufRead",
 		config = function()
 			require("hlsearch").setup()
-		end,
-	},
-	{
-		-- display rainbow delimeters
-		"HiPhish/rainbow-delimiters.nvim",
-	},
-	{
-		-- show guideline for indent
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
-		config = function()
-			local highlight = {
-				"RainbowRed",
-				"RainbowYellow",
-				"RainbowBlue",
-				"RainbowOrange",
-				"RainbowGreen",
-				"RainbowViolet",
-				"RainbowCyan",
-			}
-			local hooks = require("ibl.hooks")
-			-- create the highlight groups in the highlight setup hook, so they are reset
-			-- every time the colorscheme changes
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-				vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-				vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-				vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-				vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-				vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-				vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-			end)
-
-			vim.g.rainbow_delimiters = { highlight = highlight }
-			require("ibl").setup({
-				viewport_buffer = {
-					min = 100,
-				},
-				indent = {
-					priority = 10,
-					char = "┊",
-					smart_indent_cap = true,
-					repeat_linebreak = false,
-				},
-				scope = {
-					highlight = highlight,
-					show_start = false,
-					show_end = false,
-					show_exact_scope = false,
-				},
-				exclude = {
-					filetypes = {
-						"lspinfo",
-						"packer",
-						"checkhealth",
-						"help",
-						"man",
-						"gitcommit",
-						"TelescopePrompt",
-						"TelescopeResults",
-						"dashboard",
-						"''",
-					},
-				},
-			})
-
-			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-		end,
-	},
-	{
-		-- auto hightlights same word under cursor
-		"RRethy/vim-illuminate",
-		config = function()
-			require("illuminate").configure({})
 		end,
 	},
 	{
@@ -165,13 +88,6 @@ return {
 		"junegunn/fzf",
 		run = function()
 			vim.fn["fzf#install"]()
-		end,
-	},
-	{
-		-- for quickfix line display
-		"yorickpeterse/nvim-pqf",
-		config = function()
-			require("pqf").setup()
 		end,
 	},
 	{

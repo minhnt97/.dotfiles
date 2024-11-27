@@ -78,7 +78,7 @@ return {
 						horizontal = {
 							prompt_position = "top",
 							width = 0.9,
-							preview_width = 0.5,
+							preview_width = 0.55,
 						},
 						vertical = {
 							prompt_position = "top",
