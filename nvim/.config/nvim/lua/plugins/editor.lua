@@ -115,7 +115,20 @@ return {
 					show_end = false,
 					show_exact_scope = false,
 				},
-				exclude = {},
+				exclude = {
+					filetypes = {
+						"lspinfo",
+						"packer",
+						"checkhealth",
+						"help",
+						"man",
+						"gitcommit",
+						"TelescopePrompt",
+						"TelescopeResults",
+						"dashboard",
+						"''",
+					},
+				},
 			})
 
 			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
