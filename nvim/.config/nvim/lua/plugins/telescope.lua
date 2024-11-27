@@ -71,6 +71,7 @@ return {
 			-- setup everything
 			telescope.setup({
 				defaults = {
+					prompt_prefix = "   ",
 					sorting_strategy = "ascending",
 					layout_strategy = "flex",
 					layout_config = {

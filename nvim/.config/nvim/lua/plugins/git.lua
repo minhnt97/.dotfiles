@@ -5,6 +5,10 @@ return {
 		config = function()
 			require("gitsigns").setup({
 				attach_to_untracked = true,
+				signs = {
+					delete = { text = "󰍵" },
+					changedelete = { text = "󱕖" },
+				},
 				on_attach = function(bufnr)
 					local gitsigns = require("gitsigns")
 

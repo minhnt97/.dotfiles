@@ -21,7 +21,15 @@ return {
 			}
 
 			-- install mason
-			require("mason").setup({})
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_pending = " ",
+						package_installed = " ",
+						package_uninstalled = " ",
+					},
+				},
+			})
 
 			-- ensure these servers are installed by mason
 			require("mason-lspconfig").setup({
