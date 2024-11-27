@@ -75,14 +75,17 @@ return {
 					sorting_strategy = "ascending",
 					layout_strategy = "flex",
 					layout_config = {
+						horizontal = {
+							prompt_position = "top",
+							width = 0.9,
+							preview_width = 0.5,
+						},
+						vertical = {
+							prompt_position = "top",
+							width = 0.9,
+						},
 						flex = {
 							flip_columns = 200,
-							horizontal = {
-								prompt_position = "bottom",
-							},
-							vertical = {
-								prompt_position = "bottom",
-							},
 						},
 					},
 				},
