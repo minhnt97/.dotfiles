@@ -17,21 +17,21 @@ return {
 					require("dap.ext.vscode").load_launchjs()
 				end
 				require("dap").continue()
-			end)
+			end, { desc = "(Debug) Continue/terminate session" })
 			vim.keymap.set("n", "<Leader>dr", function()
 				dap.restart()
-			end)
+			end, { desc = "(Debug) Restart session" })
 
 			-- mappings for debug actions
 			vim.keymap.set("n", "<Leader>di", function()
 				dap.step_into()
-			end)
+			end, { desc = "(Debug) Step into function" })
 			vim.keymap.set("n", "<Leader>do", function()
 				dap.step_out()
-			end)
+			end, { desc = "(Debug) Step out of function" })
 			vim.keymap.set("n", "<Leader>dv", function()
 				dap.step_over()
-			end)
+			end, { desc = "(Debug) Step over one line of codes" })
 
 			-- mappings for console
 			vim.keymap.set("n", "<Leader>dt", function()
@@ -39,52 +39,53 @@ return {
 					enter = true,
 					position = "center",
 				})
-			end)
+			end, { desc = "(Debug) Open debug terminal (repl)" })
 
 			vim.keymap.set("n", "<Leader>dT", function()
 				dapui.float_element("console", {
 					enter = true,
 					position = "center",
 				})
-			end)
+			end, { desc = "(Debug) Open debug console" })
 
 			-- mappings for breakpoint control
 			vim.keymap.set("n", "<Leader>bt", function()
 				dap.toggle_breakpoint()
-			end)
+			end, { desc = "(Debug) Toggle breakpoint" })
 			vim.keymap.set("n", "<Leader>bl", function()
 				dap.list_breakpoints()
 				vim.cmd.copen()
-			end)
+			end, { desc = "(Debug) List breakpoints" })
 			vim.keymap.set("n", "<Leader>bx", function()
 				dap.clear_breakpoints()
-			end)
+			end, { desc = "(Debug) Clear all breakpoints" })
 
 			-- mappings for watch related actions
 			vim.keymap.set("n", "<Leader>k", function()
 				dapui.eval(nil, { enter = true })
-			end)
+			end, { desc = "(Debug) Hover" })
 			vim.keymap.set("n", "<Leader>ds", function()
 				dapui.float_element("scopes", {
 					enter = true,
 				})
-			end)
+			end, { desc = "(Debug) Open scopes" })
 			vim.keymap.set("n", "<Leader>df", function()
 				dapui.float_element("stacks", {
 					enter = true,
 				})
-			end)
+			end, { desc = "(Debug) Open call stacks" })
 			vim.keymap.set("n", "<Leader>dw", function()
 				dapui.float_element("watches", {
 					enter = true,
 				})
-			end)
-			vim.keymap.set("n", "<Leader>dh", "<cmd>DapVirtualTextToggle<CR>")
+			end, { desc = "(Debug) Open watches" })
+
+			vim.keymap.set("n", "<Leader>dh", "<cmd>DapVirtualTextToggle<CR>", { desc = "(Debug) Toggle virtual text" })
 
 			-- mappings for UI
 			vim.keymap.set("n", "<Leader>du", function()
 				dapui.toggle()
-			end)
+			end, { desc = "(Debug) Toggle UI" })
 
 			-- setup UI default layouts
 			dapui.setup({

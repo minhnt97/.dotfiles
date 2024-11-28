@@ -37,36 +37,51 @@ return {
 					hidden = true,
 					no_ignore = true,
 				})
-			end, {})
+			end, { desc = "(Telescope) Find files" })
 			vim.keymap.set("n", "<leader>fe", function()
 				telescope.extensions.file_browser.file_browser()
-			end, {})
-			vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, {})
-			vim.keymap.set("n", "<leader>fo", telescope_builtin.oldfiles, {})
+			end, { desc = "(Telescope) File browser" })
+			vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "(Telescope) Find opening buffers" })
+			vim.keymap.set(
+				"n",
+				"<leader>fo",
+				telescope_builtin.oldfiles,
+				{ desc = "(Telescope) Find recently opened buffers" }
+			)
 
 			-- mappings for text search
 			vim.keymap.set("n", "<leader>fg", function()
 				telescope.extensions.live_grep_args.live_grep_args({})
-			end, {})
+			end, { desc = "(Telescope) Input and find word" })
 			vim.keymap.set("n", "<leader>fw", function()
 				live_grep_args_shortcuts.grep_word_under_cursor({
 					postfix = "",
 					qoute = false,
 				})
-			end, {})
+			end, { desc = "(Telescope) Find word under cursor" })
 
 			-- mappings for vim
-			vim.keymap.set("n", "<leader>fr", telescope_builtin.registers, {})
-			vim.keymap.set("n", "<leader>fm", telescope_builtin.keymaps, {})
+			vim.keymap.set("n", "<leader>fr", telescope_builtin.registers, { desc = "(Telescope) See vim registers" })
+			vim.keymap.set("n", "<leader>fm", telescope_builtin.keymaps, { desc = "(Telescope) Find keymaps" })
 
 			-- mappings for symbols search using LSP
-			vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_document_symbols, {})
-			vim.keymap.set("n", "<leader>fa", telescope_builtin.lsp_dynamic_workspace_symbols, {})
+			vim.keymap.set(
+				"n",
+				"<leader>fs",
+				telescope_builtin.lsp_document_symbols,
+				{ desc = "(Telescope) Find current buffer's LSP symbols" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>fa",
+				telescope_builtin.lsp_dynamic_workspace_symbols,
+				{ desc = "(Telescope) Find current project's LSP symbols" }
+			)
 
 			-- mappings for git
 			vim.keymap.set("n", "<leader>fc", function()
 				telescope.extensions.advanced_git_search.diff_commit_file()
-			end, {})
+			end, { desc = "(Telescope) Find commits affected this buffer" })
 
 			-- setup everything
 			telescope.setup({

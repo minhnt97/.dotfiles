@@ -21,10 +21,10 @@ return {
 		-- manual sane window resize
 		"mrjones2014/smart-splits.nvim",
 		config = function()
-			vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-			vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-			vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-			vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+			vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left, { desc = "Resize window left" })
+			vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down, { desc = "Resize window down" })
+			vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up, { desc = "Resize window up" })
+			vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right, { desc = "Resize window right" })
 		end,
 	},
 	{
@@ -43,8 +43,8 @@ return {
 				return table.concat({ "<Cmd>", command, "<CR>" })
 			end
 
-			vim.keymap.set("n", "<C-w>z", cmd("WindowsMaximize"))
-			vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))
+			vim.keymap.set("n", "<C-w>z", cmd("WindowsMaximize"), { desc = "Resize window right" })
+			vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"), { desc = "Resize window right" })
 			require("windows").setup()
 		end,
 	},
@@ -54,7 +54,7 @@ return {
 		config = function()
 			vim.g.undotree_WindowLayout = 2
 			vim.g.undotree_SetFocusWhenToggle = 1
-			vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
+			vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })
 		end,
 	},
 	{
@@ -71,16 +71,16 @@ return {
 		ft = "qf",
 		config = function()
 			-- mappings for quickfix
-			vim.keymap.set("n", "<leader>co", "<cmd>copen<CR>", {})
-			vim.keymap.set("n", "<leader>cc", "<cmd>cclose<CR>", {})
-			vim.keymap.set("n", "<leader>cn", "<cmd>cnext<CR>", {})
-			vim.keymap.set("n", "<leader>cp", "<cmd>cprevious<CR>", {})
+			vim.keymap.set("n", "<leader>co", "<cmd>copen<CR>", { desc = "Open quickfix list" })
+			vim.keymap.set("n", "<leader>cc", "<cmd>cclose<CR>", { desc = "Close quickfix list" })
+			vim.keymap.set("n", "<leader>cn", "<cmd>cnext<CR>", { desc = "Move to next quickfix position" })
+			vim.keymap.set("n", "<leader>cp", "<cmd>cprevious<CR>", { desc = "Move to previous quickfix position" })
 
 			-- mappings for location list
-			vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", {})
-			vim.keymap.set("n", "<leader>lc", "<cmd>lclose<CR>", {})
-			vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>", {})
-			vim.keymap.set("n", "<leader>lp", "<cmd>lprevious<CR>", {})
+			vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", { desc = "Open location list" })
+			vim.keymap.set("n", "<leader>lc", "<cmd>lclose<CR>", { desc = "Close location list" })
+			vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" })
+			vim.keymap.set("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 		end,
 	},
 	{
@@ -124,7 +124,7 @@ return {
 			vim.g.mkdp_combine_preview = 1
 			vim.g.mkdp_command_for_global = 1
 			vim.g.mkdp_filetypes = { "markdown", "puml" }
-			vim.keymap.set("n", "<leader>p", "<cmd>MarkdownPreviewToggle<cr>", {})
+			vim.keymap.set("n", "<leader>p", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle markdown preview" })
 		end,
 		ft = { "markdown" },
 	},

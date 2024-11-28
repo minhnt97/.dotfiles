@@ -47,36 +47,41 @@ return {
 			vim.diagnostic.config({ virtual_text = false })
 
 			-- mappings for LSP display
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "(LSP) Hover" })
 			vim.keymap.set("n", "<leader>ih", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-			end, {})
-			vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, {})
+			end, { desc = "(LSP) Toggle inlay hint display" })
+			vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "(LSP) Display signature help" })
 
 			-- mappings for code navigations
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "(LSP) Go to declaration" })
 
 			-- mappings for actions
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "(LSP) Rename" })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "(LSP) Code actions" })
 
 			-- mappings for diagnostics
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "(LSP) Go to next diagnostic position" })
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
 			vim.keymap.set("n", "<leader>ee", function()
 				vim.diagnostic.setqflist()
 				vim.cmd.copen()
-			end, {})
+			end, { desc = "(LSP) Open diagnostic list" })
 		end,
 	},
 	{
 		"dnlhc/glance.nvim",
 		config = function()
 			-- mappings for code navigations
-			vim.keymap.set("n", "gd", "<cmd>Glance definitions<CR>", {})
-			vim.keymap.set("n", "gr", "<cmd>Glance references<CR>", {})
-			vim.keymap.set("n", "gi", "<cmd>Glance implementations<CR>", {})
-			vim.keymap.set("n", "<leader>gt", "<cmd>Glance type_definitions<CR>", {})
+			vim.keymap.set("n", "gd", "<cmd>Glance definitions<CR>", { desc = "(LSP) Go to definitions" })
+			vim.keymap.set("n", "gr", "<cmd>Glance references<CR>", { desc = "(LSP) Go to references" })
+			vim.keymap.set("n", "gi", "<cmd>Glance implementations<CR>", { desc = "(LSP) Go to implementations" })
+			vim.keymap.set(
+				"n",
+				"<leader>gt",
+				"<cmd>Glance type_definitions<CR>",
+				{ desc = "(LSP) Go to type_definitions" }
+			)
 
 			require("glance").setup({})
 		end,

@@ -17,7 +17,7 @@ return {
 			end, { range = true })
 
 			-- mappings for formatting
-			vim.keymap.set("n", "<leader>gf", "<cmd>Format<cr>", {})
+			vim.keymap.set("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
 
 			conform.setup({
 				default_format_opts = {

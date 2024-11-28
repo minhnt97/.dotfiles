@@ -14,13 +14,13 @@ vim.cmd("set ignorecase")
 vim.g.mapleader = " "
 
 -- Navigate vim panes
-vim.keymap.set("n", "<c-h>", ":NvimTmuxNavigateLeft<CR>")
-vim.keymap.set("n", "<c-j>", ":NvimTmuxNavigateDown<CR>")
-vim.keymap.set("n", "<c-k>", ":NvimTmuxNavigateUp<CR>")
-vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>")
+vim.keymap.set("n", "<c-h>", ":NvimTmuxNavigateLeft<CR>", { desc = "Navigate to left pane (both Nvim and Tmux)" })
+vim.keymap.set("n", "<c-j>", ":NvimTmuxNavigateDown<CR>", { desc = "Navigate to below pane (both Nvim and Tmux)" })
+vim.keymap.set("n", "<c-k>", ":NvimTmuxNavigateUp<CR>", { desc = "Navigate to above pane (both Nvim and Tmux)" })
+vim.keymap.set("n", "<c-l>", ":NvimTmuxNavigateRight<CR>", { desc = "Navigate to right pane (both Nvim and Tmux)" })
 
 -- exit terminal mode
-vim.keymap.set("t", "jk", "<C-\\><C-N>", {})
+vim.keymap.set("t", "jk", "<C-\\><C-N>", { desc = "Exit insert mode in terminal" })
 
 -- Show cursor line
 vim.o.cursorline = true
