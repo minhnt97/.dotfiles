@@ -21,6 +21,9 @@ return {
 			vim.keymap.set("n", "<Leader>dr", function()
 				dap.restart()
 			end, { desc = "(Debug) Restart session" })
+			vim.keymap.set("n", "<Leader>dx", function()
+				dap.terminate()
+			end, { desc = "(Debug) Terminate session" })
 
 			-- mappings for debug actions
 			vim.keymap.set("n", "<Leader>di", function()
