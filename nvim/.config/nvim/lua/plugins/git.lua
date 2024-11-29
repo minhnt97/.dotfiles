@@ -5,6 +5,7 @@ return {
 		config = function()
 			require("gitsigns").setup({
 				attach_to_untracked = true,
+				sign_priority = 90,
 				signs = {
 					delete = { text = "󰍵" },
 					changedelete = { text = "󱕖" },
