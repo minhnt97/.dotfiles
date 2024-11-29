@@ -47,7 +47,6 @@ return {
 			vim.diagnostic.config({ virtual_text = false })
 
 			-- mappings for LSP display
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "(LSP) Hover" })
 			vim.keymap.set("n", "<leader>ih", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 			end, { desc = "(LSP) Toggle inlay hint display" })
@@ -55,17 +54,6 @@ return {
 
 			-- mappings for code navigations
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "(LSP) Go to declaration" })
-
-			-- mappings for actions
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "(LSP) Rename" })
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "(LSP) Code actions" })
-
-			-- mappings for diagnostics
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "(LSP) Go to next diagnostic position" })
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
-			vim.keymap.set("n", "<leader>ee", function()
-				vim.diagnostic.setqflist()
-			end, { desc = "(LSP) Open diagnostic list" })
 		end,
 	},
 	{
@@ -84,5 +72,54 @@ return {
 
 			require("glance").setup({})
 		end,
+	},
+	{
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			-- mappings for code navigations
+			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", { desc = "(LSP) Hover" })
+
+			-- mappings for code actions
+			vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "(LSP) Rename" })
+			vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "(LSP) Code actions" })
+
+			-- mappings for diagnostics
+			vim.keymap.set(
+				"n",
+				"]d",
+				"<cmd>Lspsaga diagnostic_jump_next<CR>",
+				{ desc = "(LSP) Go to next diagnostic position" }
+			)
+			vim.keymap.set(
+				"n",
+				"[d",
+				"<cmd>Lspsaga diagnostic_jump_prev<CR>",
+				{ desc = "(LSP) Go to prev diagnostic position" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>ee",
+				"<cmd>:Lspsaga show_workspace_diagnostics ++float<CR>",
+				{ desc = "(LSP) Open workspace diagnostic list" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>eE",
+				"<cmd>:Lspsaga show_buf_diagnostics ++float<CR>",
+				{ desc = "(LSP) Open buffer diagnostic list" }
+			)
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+				coda_action = {
+					extend_gitsigns = true,
+				},
+			})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 	},
 }
