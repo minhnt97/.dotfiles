@@ -65,7 +65,6 @@ return {
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
 			vim.keymap.set("n", "<leader>ee", function()
 				vim.diagnostic.setqflist()
-				vim.cmd.copen()
 			end, { desc = "(LSP) Open diagnostic list" })
 		end,
 	},

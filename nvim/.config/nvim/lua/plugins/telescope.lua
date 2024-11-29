@@ -32,12 +32,13 @@ return {
 			local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 
 			-- mappings for file search
-			vim.keymap.set("n", "<leader>ff", function()
+			vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "(Telescope) Find files" })
+			vim.keymap.set("n", "<leader>fF", function()
 				telescope_builtin.find_files({
 					hidden = true,
 					no_ignore = true,
 				})
-			end, { desc = "(Telescope) Find files" })
+			end, { desc = "(Telescope) Find hidden and ignored files" })
 			vim.keymap.set("n", "<leader>fe", function()
 				telescope.extensions.file_browser.file_browser()
 			end, { desc = "(Telescope) File browser" })
@@ -88,6 +89,9 @@ return {
 				defaults = {
 					prompt_prefix = "   ",
 					sorting_strategy = "ascending",
+					path_display = {
+						smart = {},
+					},
 					layout_strategy = "flex",
 					layout_config = {
 						horizontal = {
