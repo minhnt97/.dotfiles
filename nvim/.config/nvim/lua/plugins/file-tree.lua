@@ -6,7 +6,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
-			"3rd/image.nvim",
+			-- "3rd/image.nvim",
 			{
 				"s1n7ax/nvim-window-picker",
 				version = "2.*",
@@ -28,20 +28,6 @@ return {
 			},
 		},
 		config = function()
-			-- mappings
-			vim.keymap.set(
-				"n",
-				"<leader>ef",
-				":Neotree toggle float reveal_force_cwd<cr>",
-				{ desc = "Toggle file-tree in float window" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>el",
-				":Neotree toggle left reveal_force_cwd <cr>",
-				{ desc = "Toggle file-tree in left-side pane" }
-			)
-
 			require("neo-tree").setup({
 				filesystem = {
 					window = {

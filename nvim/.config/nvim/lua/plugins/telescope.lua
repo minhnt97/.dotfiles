@@ -27,70 +27,23 @@ return {
 		},
 		config = function()
 			local telescope = require("telescope")
-			local telescope_builtin = require("telescope.builtin")
 			local lga_actions = require("telescope-live-grep-args.actions")
-			local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-
-			-- mappings for file search
-			vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "(Telescope) Find files" })
-			vim.keymap.set("n", "<leader>fF", function()
-				telescope_builtin.find_files({
-					hidden = true,
-					no_ignore = true,
-				})
-			end, { desc = "(Telescope) Find hidden and ignored files" })
-			vim.keymap.set("n", "<leader>fe", function()
-				telescope.extensions.file_browser.file_browser()
-			end, { desc = "(Telescope) File browser" })
-			vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "(Telescope) Find opening buffers" })
-			vim.keymap.set(
-				"n",
-				"<leader>fo",
-				telescope_builtin.oldfiles,
-				{ desc = "(Telescope) Find recently opened buffers" }
-			)
-
-			-- mappings for text search
-			vim.keymap.set("n", "<leader>fg", function()
-				telescope.extensions.live_grep_args.live_grep_args({})
-			end, { desc = "(Telescope) Input and find word" })
-			vim.keymap.set("n", "<leader>fw", function()
-				live_grep_args_shortcuts.grep_word_under_cursor({
-					postfix = "",
-					qoute = false,
-				})
-			end, { desc = "(Telescope) Find word under cursor" })
-
-			-- mappings for vim
-			vim.keymap.set("n", "<leader>fr", telescope_builtin.registers, { desc = "(Telescope) See vim registers" })
-			vim.keymap.set("n", "<leader>fm", telescope_builtin.keymaps, { desc = "(Telescope) Find keymaps" })
-
-			-- mappings for symbols search using LSP
-			vim.keymap.set(
-				"n",
-				"<leader>fs",
-				telescope_builtin.lsp_document_symbols,
-				{ desc = "(Telescope) Find current buffer's LSP symbols" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>fa",
-				telescope_builtin.lsp_dynamic_workspace_symbols,
-				{ desc = "(Telescope) Find current project's LSP symbols" }
-			)
-
-			-- mappings for git
-			vim.keymap.set("n", "<leader>fc", function()
-				telescope.extensions.advanced_git_search.diff_commit_file()
-			end, { desc = "(Telescope) Find commits affected this buffer" })
+			local actions = require("telescope.actions")
+			local open_with_trouble = require("trouble.sources.telescope").open
+			local add_to_trouble = require("trouble.sources.telescope").add
 
 			-- setup everything
 			telescope.setup({
 				defaults = {
 					prompt_prefix = "   ",
+					-- initial_mode = "normal",
+					mappings = {
+						i = { ["<c-t>"] = open_with_trouble },
+						n = { ["<c-t>"] = open_with_trouble },
+					},
 					sorting_strategy = "ascending",
 					path_display = {
-						smart = {},
+						truncate = 3,
 					},
 					layout_strategy = "flex",
 					layout_config = {
@@ -146,15 +99,11 @@ return {
 						auto_quoting = true, -- enable/disable auto-quoting
 						mappings = { -- extend mappings
 							i = {
-								["<C-k>"] = lga_actions.quote_prompt(),
 								["<C-h>"] = lga_actions.quote_prompt({
 									postfix = " --hidden --no-ignore ",
 								}),
-								["<C-g>"] = lga_actions.quote_prompt({
-									postfix = " --iglob ",
-								}),
-								["<C-t>"] = lga_actions.quote_prompt({
-									postfix = " -t ",
+								["<C-k>"] = lga_actions.quote_prompt({
+									postfix = " --iglob *",
 								}),
 								-- freeze the current list and start a fuzzy search in the frozen list
 								["<C-space>"] = lga_actions.to_fuzzy_refine,

@@ -1,19 +1,9 @@
 return {
 	{
-		"sainnhe/gruvbox-material",
+		"rebelot/kanagawa.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
-			-- Optionally configure and load the colorscheme
-			-- directly inside the plugin declaration.
-			vim.g.gruvbox_material_enable_italic = false
-			vim.g.gruvbox_material_disable_italic_comment = 1
-			vim.g.gruvbox_material_dim_inactive_windows = 1
-			vim.g.gruvbox_material_inlay_hints_background = "none"
-			vim.g.gruvbox_material_ui_contrast = "high"
-			vim.g.gruvbox_material_background = "hard"
-			vim.g.gruvbox_material_foreground = "material"
-		end,
+		opts = {},
 	},
 	{
 		-- change status line display
@@ -26,7 +16,7 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff" },
+					lualine_b = { "branch", "selectioncount" },
 					lualine_c = {
 						{
 							"filename",
@@ -40,13 +30,6 @@ return {
 					lualine_z = { "location" },
 				},
 			})
-		end,
-	},
-	{
-		-- for quickfix line display
-		"yorickpeterse/nvim-pqf",
-		config = function()
-			require("pqf").setup()
 		end,
 	},
 	{
@@ -138,11 +121,7 @@ return {
 		-- display dashboard when nvim starts
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				-- config
-			})
-		end,
+		opts = {},
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 }

@@ -145,18 +145,12 @@ return {
 		-- for auto insert close pair
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
-		-- use opts = {} for passing setup options
-		-- this is equivalent to setup({}) function
+		opts = {},
 	},
 	{
 		"danymat/neogen",
 		config = true,
 		-- Uncomment next line if you want to follow only stable versions
 		-- version = "*"
-		config = function()
-			vim.keymap.set("n", "<leader>nf", require("neogen").generate, { desc = "Generate doxygen" })
-			require("neogen").setup({})
-		end,
 	},
 }

@@ -16,9 +16,6 @@ return {
 				require("conform").format({ async = true, lsp_format = "fallback", range = range })
 			end, { range = true })
 
-			-- mappings for formatting
-			vim.keymap.set("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
-
 			conform.setup({
 				default_format_opts = {
 					lsp_format = "fallback",
@@ -26,7 +23,7 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					python = { "isort", "black" },
-					json = { "biome" },
+					-- json = { "biome" },
 					["_"] = { "prettierd", "prettier" },
 				},
 			})
