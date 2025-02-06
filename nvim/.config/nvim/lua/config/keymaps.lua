@@ -11,6 +11,10 @@ map("n", "<C-j>", require("smart-splits").move_cursor_down)
 map("n", "<C-k>", require("smart-splits").move_cursor_up)
 map("n", "<C-l>", require("smart-splits").move_cursor_right)
 
+-- mappings for moving between tabs
+map("n", "<Tab>", "<cmd>tabn<cr>", { desc = "Go to next tab" })
+map("n", "<S-Tab>", "<cmd>tabp<cr>", { desc = "Go to prev tab" })
+
 -- mappings for manual window resize
 map("n", "<A-h>", require("smart-splits").resize_left, { desc = "Resize window left" })
 map("n", "<A-j>", require("smart-splits").resize_down, { desc = "Resize window down" })
@@ -121,7 +125,7 @@ map(
 )
 
 -- generate doxygen
-map("n", "<leader>nf", "<cmd>Neogen generate<cr>", { desc = "Generate doxygen" })
+map("n", "<leader>nf", require("neogen").generate, { desc = "Generate doxygen" })
 
 -- mappings for debug session control
 local dap = require("dap")

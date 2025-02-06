@@ -1,4 +1,5 @@
-fastfetch
+# add git 
+export PATH=$PATH:/c/Users/g703834/AppData/Local/Programs/Git/bin
 
 # Path to your Oh My Zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -62,7 +63,6 @@ plugins=(
 	z
 	zsh-autosuggestions 
 	zsh-syntax-highlighting 
-	zsh-history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
