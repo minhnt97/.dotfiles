@@ -1,6 +1,3 @@
-# add git 
-export PATH=$PATH:/c/Users/g703834/AppData/Local/Programs/Git/bin
-
 # Path to your Oh My Zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
