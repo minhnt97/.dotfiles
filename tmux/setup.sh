@@ -3,7 +3,7 @@
 echo ":: Start setup tmux ..."
 
 # install & stow tmux
-sudo pacman -S tmux
+yay -S tmux
 
 stow -v tmux
 
