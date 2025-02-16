@@ -227,7 +227,8 @@ map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" }
 map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 
 -- mappings for markdown preview
-map("n", "<leader>p", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle markdown preview" })
+map("n", "<leader>p", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle local markdown preview" })
+map("n", "<leader>P", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle web markdown preview" })
 
 -- mappings for file tree toggle
 map("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", { desc = "Toggle file-tree in float window" })
