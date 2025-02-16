@@ -3,6 +3,6 @@ name = "night-filter"
 default = true  # shader to use during times when there is no other shader scheduled
 
 [[shades]]
-name = "vibrance"
-start_time = 02:00:00
-end_time = 03:00:00   # optional if you have more than one shade with start_time
+name = "day-filter"
+start_time = 09:00:00
+end_time = 15:00:00   # optional if you have more than one shade with start_time

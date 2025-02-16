@@ -1,18 +1,13 @@
 return {
         {
-                'AlexvZyl/nordic.nvim',
-                lazy = false,
+                'rmehri01/onenord.nvim',
+                lazy     = false,
                 priority = 1000,
-                opts = {
-                        cursorline = {
-                                theme = 'light',
-                        },
-                        on_highlight = function(highlights, _palette)
-                                for _, highlight in pairs(highlights) do
-                                        highlight.italic = false
-                                end
-                        end
-                },
+                config   = function()
+                        require('onenord').setup({
+                                fade_nc = true, -- Fade non-current windows, making them more distinguishable
+                        })
+                end,
         },
         {
                 -- change status line display
