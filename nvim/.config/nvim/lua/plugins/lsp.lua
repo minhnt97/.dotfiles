@@ -65,7 +65,6 @@ return {
                 "folke/trouble.nvim",
                 opts = {
                         auto_close = true,
-                        auto_open = true,
                         auto_jump = false,
                         keys = {
                                 J = "next",

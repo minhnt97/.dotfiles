@@ -115,13 +115,6 @@ return {
                 end,
         },
         {
-                -- change cursor line & number display
-                "mawkler/modicator.nvim",
-                opts = {
-                        show_warnings = true,
-                },
-        },
-        {
                 -- display dashboard when nvim starts
                 "nvimdev/dashboard-nvim",
                 event = "VimEnter",
