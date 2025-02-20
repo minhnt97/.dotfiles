@@ -15,6 +15,7 @@ return {
                                 "lua_ls",
                                 "clangd",
                                 "lemminx",
+                                "cmake",
                         }
 
                         -- install mason
