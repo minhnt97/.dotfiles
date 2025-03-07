@@ -2,4 +2,4 @@
 vim.o.termguicolors = true
 
 -- Set colorscheme
-vim.cmd.colorscheme("onenord")
+vim.cmd.colorscheme("vague")
