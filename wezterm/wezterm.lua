@@ -16,6 +16,7 @@ config.window_padding = {
         top = 0,
         bottom = 0,
 }
+config.window_decorations = "RESIZE"
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
