@@ -16,6 +16,7 @@ return {
                                 "clangd",
                                 "lemminx",
                                 "cmake",
+                                "marksman",
                         }
 
                         -- install mason

@@ -308,3 +308,7 @@ map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
 map("n", "<leader>fc", function()
         telescope.extensions.advanced_git_search.diff_commit_file()
 end, { desc = "(Telescope) Find commits affected this buffer" })
+
+-- mappings for note taking
+map("n", "<leader>nn", "<cmd>ZkNew<cr>", { desc = "New note" })
+map("n", "<leader>nl", "<cmd>ZkBrowse<cr>", { desc = "List notes" })
