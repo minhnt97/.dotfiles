@@ -1,22 +1,14 @@
 return {
         {
                 "vague2k/vague.nvim",
-                config = function()
+                lazy     = false,
+                priority = 1000,
+                config   = function()
                         -- NOTE: you do not need to call setup if you don't want to.
                         require("vague").setup({
                                 -- optional configuration here
                         })
                 end
-        },
-        {
-                'rmehri01/onenord.nvim',
-                lazy     = false,
-                priority = 1000,
-                config   = function()
-                        require('onenord').setup({
-                                fade_nc = true, -- Fade non-current windows, making them more distinguishable
-                        })
-                end,
         },
         {
                 -- change status line display
