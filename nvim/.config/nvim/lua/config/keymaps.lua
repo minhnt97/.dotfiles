@@ -303,6 +303,7 @@ map("n", "<leader>ng", "<cmd>Neogit<cr>", { desc = "Open neogit" })
 
 -- mappings for formatting
 map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
+map("v", "<leader>f", "<cmd>Format<cr>", { desc = "Format this selection" })
 
 -- mappings for git
 map("n", "<leader>fc", function()
