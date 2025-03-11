@@ -36,7 +36,18 @@ return {
                         telescope.setup({
                                 defaults = {
                                         prompt_prefix = "   ",
-                                        -- initial_mode = "normal",
+                                        vimgrep_arguments = {
+                                                {
+                                                        "rg",
+                                                        "--color=never",
+                                                        "--no-heading",
+                                                        "--with-filename",
+                                                        "--line-number",
+                                                        "--column",
+                                                        "--smart-case",
+                                                        "--ignore-case"
+                                                }
+                                        },
                                         mappings = {
                                                 i = { ["<c-t>"] = open_with_trouble },
                                                 n = { ["<c-t>"] = open_with_trouble },
