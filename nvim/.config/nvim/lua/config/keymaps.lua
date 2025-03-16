@@ -227,8 +227,8 @@ map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" }
 map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 
 -- mappings for markdown preview
-map("n", "<leader>p", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle local markdown preview" })
-map("n", "<leader>P", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Toggle web markdown preview" })
+map("n", "<leader>p", "<cmd>Markview toggle<cr>", { desc = "Toggle local markdown preview" })
+map("n", "<leader>P", "<cmd>LivePreview start<cr>", { desc = "Toggle web markdown preview" })
 
 -- mappings for file tree toggle
 map("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", { desc = "Toggle file-tree in float window" })
@@ -304,11 +304,6 @@ map("n", "<leader>ng", "<cmd>Neogit<cr>", { desc = "Open neogit" })
 -- mappings for formatting
 map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
 map("v", "<leader>f", "<cmd>Format<cr>", { desc = "Format this selection" })
-
--- mappings for git
-map("n", "<leader>fc", function()
-        telescope.extensions.advanced_git_search.diff_commit_file()
-end, { desc = "(Telescope) Find commits affected this buffer" })
 
 -- mappings for note taking
 map("n", "<leader>nn", "<cmd>ZkNew<cr>", { desc = "New note" })

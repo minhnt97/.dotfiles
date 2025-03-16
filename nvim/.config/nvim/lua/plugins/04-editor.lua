@@ -60,23 +60,15 @@ return {
                 opts = {},
         },
         {
-                'MeanderingProgrammer/render-markdown.nvim',
-                dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-                ---@module 'render-markdown'
-                ---@type render.md.UserConfig
-                config = function()
-                        require('render-markdown').setup({
-                        })
-                end
+                "OXY2DEV/markview.nvim",
+                lazy = false,
         },
         {
-                "iamcco/markdown-preview.nvim",
-                cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-                build = "cd app && yarn install",
-                init = function()
-                        vim.g.mkdp_filetypes = { "markdown" }
-                end,
-                ft = { "markdown" },
+                'brianhuster/live-preview.nvim',
+                dependencies = {
+                        -- You can choose one of the following pickers
+                        'nvim-telescope/telescope.nvim',
+                },
         },
         {
                 "utilyre/barbecue.nvim",

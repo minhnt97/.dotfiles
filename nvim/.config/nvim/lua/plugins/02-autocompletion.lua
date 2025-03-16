@@ -2,18 +2,18 @@ return {
         {
                 "hrsh7th/nvim-cmp",
                 dependencies = {
-                        "hrsh7th/cmp-buffer", -- buffer source for nvim-cmp
-                        "hrsh7th/cmp-path", -- path source for nvim-cmp
-                        "hrsh7th/cmp-cmdline", -- path source for nvim-cmp
+                        "hrsh7th/cmp-buffer",                   -- buffer source for nvim-cmp
+                        "hrsh7th/cmp-path",                     -- path source for nvim-cmp
+                        "hrsh7th/cmp-cmdline",                  -- path source for nvim-cmp
                         "neovim/nvim-lspconfig",
-                        "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+                        "hrsh7th/cmp-nvim-lsp",                 -- LSP source for nvim-cmp
                         "hrsh7th/cmp-nvim-lsp-document-symbol", -- display signature help for nvim-cmp
-                        "hrsh7th/cmp-nvim-lsp-signature-help", -- display signature help for nvim-cmp
-                        "rafamadriz/friendly-snippets", -- vs-code like snippets
-                        "saadparwaiz1/cmp_luasnip", -- LuaSnip source for nvim-cmp
-                        "L3MON4D3/LuaSnip", -- snippet engine
-                        "onsails/lspkind.nvim", -- add vscode-like icon to completion menu
-                        "rcarriga/cmp-dap", -- for dap autocompletion
+                        "hrsh7th/cmp-nvim-lsp-signature-help",  -- display signature help for nvim-cmp
+                        "rafamadriz/friendly-snippets",         -- vs-code like snippets
+                        "saadparwaiz1/cmp_luasnip",             -- LuaSnip source for nvim-cmp
+                        "L3MON4D3/LuaSnip",                     -- snippet engine
+                        "onsails/lspkind.nvim",                 -- add vscode-like icon to completion menu
+                        "rcarriga/cmp-dap",                     -- for dap autocompletion
                 },
                 config = function()
                         -- luasnip setup
@@ -106,7 +106,7 @@ return {
                                 -- enable cmp-dap
                                 enabled = function()
                                         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or
-                                        require("cmp_dap").is_dap_buffer()
+                                            require("cmp_dap").is_dap_buffer()
                                 end,
                         })
 

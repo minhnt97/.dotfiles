@@ -16,14 +16,6 @@ return {
                         },
                         "nvim-telescope/telescope-ui-select.nvim",
                         "nvim-telescope/telescope-file-browser.nvim",
-                        "nvim-telescope/telescope-dap.nvim",
-                        {
-                                "aaronhallaert/advanced-git-search.nvim",
-                                cmd = { "AdvancedGitSearch" },
-                                dependencies = {
-                                        "sindrets/diffview.nvim",
-                                },
-                        },
                 },
                 config = function()
                         local telescope = require("telescope")
@@ -109,9 +101,6 @@ return {
                                                 require("telescope.themes").get_dropdown({}),
                                         },
                                         file_browser = {},
-                                        advanced_git_search = {
-                                                diff_plugin = "diffview",
-                                        },
                                         live_grep_args = {
                                                 auto_quoting = true, -- enable/disable auto-quoting
                                                 mappings = {         -- extend mappings
@@ -134,8 +123,6 @@ return {
                         telescope.load_extension("live_grep_args")
                         telescope.load_extension("ui-select")
                         telescope.load_extension("file_browser")
-                        telescope.load_extension("dap")
-                        telescope.load_extension("advanced_git_search")
                 end,
         },
 }
