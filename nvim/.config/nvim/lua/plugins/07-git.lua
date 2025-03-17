@@ -20,7 +20,7 @@ return {
                 config = function()
                         vim.opt.fillchars:append({ diff = "╱" })
                         require("diffview").setup({
-                                enhanced_diff_hl = false,
+                                enhanced_diff_hl = true,
                                 view = {
                                         default = {
                                                 -- Config for changed files, and staged files in diff views.
