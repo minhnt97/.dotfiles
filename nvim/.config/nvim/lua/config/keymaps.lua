@@ -228,7 +228,15 @@ map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location
 
 -- mappings for markdown preview
 map("n", "<leader>p", "<cmd>Markview toggle<cr>", { desc = "Toggle local markdown preview" })
-map("n", "<leader>P", "<cmd>LivePreview start<cr>", { desc = "Toggle web markdown preview" })
+map("n", "<leader>P", function()
+        local peek = require("peek")
+        if peek.is_open()
+        then
+                peek.close()
+        else
+                peek.open()
+        end
+end, { desc = "Toggle web markdown preview" })
 
 -- mappings for file tree toggle
 map("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", { desc = "Toggle file-tree in float window" })
