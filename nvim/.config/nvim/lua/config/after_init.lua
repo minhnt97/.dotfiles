@@ -2,4 +2,4 @@
 vim.o.termguicolors = true
 
 -- Set colorscheme
-vim.cmd.colorscheme("vague")
+vim.cmd.colorscheme("gruvbox-material")
