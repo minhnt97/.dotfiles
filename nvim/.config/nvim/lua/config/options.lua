@@ -3,6 +3,10 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=8")
 vim.cmd("set softtabstop=8")
 vim.cmd("set shiftwidth=8")
+vim.cmd("set autoindent")
+
+-- Virtual edit
+vim.cmd("set virtualedit=all")
 
 -- Show line number
 vim.cmd("set number relativenumber")
