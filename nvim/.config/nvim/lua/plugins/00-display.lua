@@ -1,5 +1,16 @@
 return {
         {
+                "cdmill/neomodern.nvim",
+                lazy = false,
+                priority = 1000,
+                config = function()
+                        require("neomodern").setup({
+                                -- optional configuration here
+                        })
+                        require("neomodern").load()
+                end,
+        },
+        {
                 'everviolet/nvim',
                 name = 'evergarden',
                 priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
