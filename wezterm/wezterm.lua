@@ -7,7 +7,7 @@ config.default_prog = { "pwsh", "-nologo" }
 
 -- appearance
 config.term = "xterm-256color"
-config.color_scheme = 'Gruvbox Material (Gogh)'
+config.color_scheme = 'Everforest Dark Medium (Gogh)'
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
 config.font_size = 11
 config.window_padding = {
