@@ -2,4 +2,4 @@
 vim.o.termguicolors = true
 
 -- Set colorscheme
-vim.cmd.colorscheme("gruvbox-material")
+vim.cmd.colorscheme("evergarden")
