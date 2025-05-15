@@ -1,50 +1,14 @@
 return {
+        -- Lazy
         {
-                "cdmill/neomodern.nvim",
+                "vague2k/vague.nvim",
                 lazy = false,
                 priority = 1000,
                 config = function()
-                        require("neomodern").setup({
+                        -- NOTE: you do not need to call setup if you don't want to.
+                        require("vague").setup({
                                 -- optional configuration here
                         })
-                        require("neomodern").load()
-                end,
-        },
-        {
-                'everviolet/nvim',
-                name = 'evergarden',
-                priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
-                opts = {
-                        theme = {
-                                variant = 'fall', -- 'winter'|'fall'|'spring'|'summer'
-                                accent = 'green',
-                        },
-                        editor = {
-                                transparent_background = false,
-                                sign = { color = 'none' },
-                                float = {
-                                        color = 'mantle',
-                                        invert_border = false,
-                                },
-                                completion = {
-                                        color = 'surface0',
-                                },
-                        },
-                }
-        },
-        {
-                'sainnhe/gruvbox-material',
-                lazy = false,
-                priority = 1000,
-                config = function()
-                        vim.g.gruvbox_material_enable_italic = false
-                        vim.g.gruvbox_material_disable_italic_comment = true
-                        vim.g.gruvbox_material_background = "medium"
-                        vim.g.gruvbox_material_foreground = "material"
-                        vim.g.gruvbox_material_dim_inactive_windows = true
-                        vim.g.gruvbox_material_visual = 'green background'
-                        vim.g.gruvbox_material_ui_contrast = 'high'
-                        vim.g.gruvbox_material_float_style = 'dim'
                 end
         },
         {
