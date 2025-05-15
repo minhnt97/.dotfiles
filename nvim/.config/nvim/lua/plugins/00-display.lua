@@ -1,5 +1,10 @@
 return {
-        -- Lazy
+        {
+                "thesimonho/kanagawa-paper.nvim",
+                lazy = false,
+                priority = 1000,
+                opts = {},
+        },
         {
                 "vague2k/vague.nvim",
                 lazy = false,
