@@ -5,6 +5,9 @@ local config = wezterm.config_builder()
 -- default program
 config.default_prog = { "pwsh", "-nologo" }
 
+-- autuload config
+config.automatically_reload_config = true
+
 -- appearance
 config.term = "xterm-256color"
 config.color_scheme = 'Everforest Dark Medium (Gogh)'
