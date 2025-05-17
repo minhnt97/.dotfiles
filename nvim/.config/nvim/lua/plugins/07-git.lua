@@ -18,6 +18,7 @@ return {
                 -- view git diff
                 "sindrets/diffview.nvim",
                 config = function()
+                        local actions = require("diffview.actions")
                         vim.opt.fillchars:append({ diff = "╱" })
                         require("diffview").setup({
                                 enhanced_diff_hl = true,
@@ -38,12 +39,9 @@ return {
                                 },
                                 keymaps = {
                                         file_panel = {
-                                                {
-                                                        "n",
-                                                        "q",
-                                                        [[<Cmd>DiffviewClose<CR>]],
-                                                        { desc = "Close diff view" },
-                                                },
+                                                { "n", "J", actions.select_next_entry,  { desc = "Open the diff for the next file" } },
+                                                { "n", "K", actions.select_prev_entry,  { desc = "Open the diff for the previous file" } },
+                                                { "n", "q", [[<Cmd>DiffviewClose<CR>]], { desc = "Close diff view" } },
                                         },
                                 },
                         })

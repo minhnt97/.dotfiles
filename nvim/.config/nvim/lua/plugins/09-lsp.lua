@@ -1,16 +1,11 @@
 return {
         {
-                -- auto config LSPs
                 "neovim/nvim-lspconfig",
                 dependencies = {
                         "williamboman/mason-lspconfig.nvim",
                         "williamboman/mason.nvim",
                 },
-
                 config = function()
-                        local lspconfig = require("lspconfig")
-                        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
                         local servers = {
                                 "lua_ls",
                                 "clangd",
@@ -30,34 +25,29 @@ return {
                                 },
                         })
 
-                        -- ensure these servers are installed by mason
-                        require("mason-lspconfig").setup({
-                                ensure_installed = servers,
-                        })
-
-                        -- setup servers
-                        for _, lsp in ipairs(servers) do
-                                lspconfig[lsp].setup({
-                                        capabilities = capabilities,
-                                })
-                        end
-
                         -- specific configuration
-                        lspconfig.clangd.setup({
-                                cmd = {
-                                        'clangd',
-                                        '--all-scopes-completion',
-                                        '--background-index',
-                                        '--clang-tidy',
-                                        '--header-insertion=never',
-                                        '--limit-references=0',
-                                        '--limit-results=0',
-                                        '--rename-file-limit=0',
-                                },
-                                init_options = {
-                                        fallbackFlags = { '-std=c++17' },
-                                },
-                        })
+                        vim.lsp.config['clangd'] = {
+                                settings = {
+                                        cmd = {
+                                                'clangd',
+                                                '--all-scopes-completion',
+                                                '--background-index',
+                                                '--clang-tidy',
+                                                '--header-insertion=never',
+                                                '--limit-references=0',
+                                                '--limit-results=0',
+                                                '--rename-file-limit=0',
+                                        },
+                                        init_options = {
+                                                fallbackFlags = { '-std=c++11' },
+                                        },
+                                }
+                        }
+
+                        -- enable server
+                        for _, lsp in ipairs(servers) do
+                                vim.lsp.enable(lsp)
+                        end
 
                         -- disable diagnostics display to use tiny line
                         vim.diagnostic.config({ virtual_text = false })
@@ -66,8 +56,9 @@ return {
         {
                 "folke/trouble.nvim",
                 opts = {
-                        auto_close = true,
-                        auto_jump = false,
+                        auto_refresh = false, -- auto refresh when open
+                        auto_close = true,    -- auto close when there are no items
+                        auto_jump = true,     -- auto jump to the item when there's only one
                         keys = {
                                 J = "next",
                                 K = "prev",

@@ -3,18 +3,19 @@ return {
                 "thesimonho/kanagawa-paper.nvim",
                 lazy = false,
                 priority = 1000,
-                opts = {},
-        },
-        {
-                "vague2k/vague.nvim",
-                lazy = false,
-                priority = 1000,
                 config = function()
-                        -- NOTE: you do not need to call setup if you don't want to.
-                        require("vague").setup({
-                                -- optional configuration here
+                        require("kanagawa-paper").setup({
+                                dim_inactive = true,
+                                cache = true,
+                                integrations = {
+                                        wezterm = {
+                                                enabled = true,
+                                                path = (os.getenv("TEMP") or "/tmp") .. "/nvim-theme"
+                                        },
+                                },
                         })
                 end
+
         },
         {
                 -- change status line display
@@ -31,11 +32,11 @@ return {
                                         lualine_c = {
                                                 {
                                                         "filename",
-                                                        path = 1, -- 1: Relative path
+                                                        path = 5, -- 1: Relative path
                                                 },
                                         },
 
-                                        lualine_x = { "encoding", "fileformat", "filetype" },
+                                        lualine_x = { "filetype", "lsp_status" },
                                         lualine_y = { "progress" },
 
                                         lualine_z = { "location" },

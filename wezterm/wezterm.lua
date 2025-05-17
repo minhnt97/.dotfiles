@@ -1,38 +1,39 @@
-local wezterm = require("wezterm")
-local act = wezterm.action
-local config = wezterm.config_builder()
+local wezterm                                     = require("wezterm")
+local act                                         = wezterm.action
+local config                                      = wezterm.config_builder()
 
 -- default program
-config.default_prog = { "pwsh", "-nologo" }
+config.default_prog                               = { "pwsh", "-nologo" }
 
 -- autuload config
-config.automatically_reload_config = true
+config.automatically_reload_config                = true
 
 -- appearance
-config.term = "xterm-256color"
-config.color_scheme = 'Everforest Dark Medium (Gogh)'
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
-config.font_size = 11
-config.window_padding = {
+config.term                                       = "xterm-256color"
+config.color_scheme                               = 'kanagawa-paper-ink'
+config.font                                       = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold" })
+config.font_size                                  = 10
+config.window_padding                             = {
         left = 5,
         right = 5,
         top = 0,
         bottom = 0,
 }
-config.window_decorations = "RESIZE"
-config.tab_bar_at_bottom = true
-config.use_fancy_tab_bar = true
-config.tab_max_width = 32
-config.inactive_pane_hsb = {
+config.window_decorations                         = "RESIZE"
+config.tab_bar_at_bottom                          = true
+config.use_fancy_tab_bar                          = true
+config.tab_max_width                              = 32
+config.hide_tab_bar_if_only_one_tab               = true
+config.inactive_pane_hsb                          = {
         saturation = 1.0,
-        brightness = 0.7,
+        brightness = 0.9,
 }
 
 -- tab manage
 config.switch_to_last_active_tab_when_closing_tab = true
 
 -- Keys
-config.leader = {
+config.leader                                     = {
         key = "s",
         mods = "CTRL",
         timeout_milliseconds = 2000,
@@ -77,6 +78,12 @@ config.keys = {
                 key = "[",
                 mods = "LEADER",
                 action = wezterm.action.ActivateCopyMode,
+        },
+
+        {
+                key = "]",
+                mods = "LEADER",
+                action = wezterm.action.Search({ CaseInSensitiveString = '' })
         },
 
         {
@@ -139,12 +146,7 @@ config.keys = {
                 action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
         },
         {
-                key = "r",
-                mods = "LEADER",
-                action = act.RotatePanes("Clockwise"),
-        },
-        {
-                key = "R",
+                key = "Space",
                 mods = "LEADER",
                 action = act.RotatePanes("CounterClockwise"),
         },
