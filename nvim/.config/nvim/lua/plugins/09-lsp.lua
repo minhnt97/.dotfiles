@@ -14,6 +14,11 @@ return {
                                 "marksman",
                         }
 
+                        -- ensure these servers are installed by mason
+                        require("mason-lspconfig").setup({
+                                ensure_installed = servers,
+                        })
+
                         -- install mason
                         require("mason").setup({
                                 ui = {
