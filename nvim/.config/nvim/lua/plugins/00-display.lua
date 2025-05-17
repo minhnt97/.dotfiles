@@ -7,12 +7,6 @@ return {
                         require("kanagawa-paper").setup({
                                 dim_inactive = true,
                                 cache = true,
-                                integrations = {
-                                        wezterm = {
-                                                enabled = true,
-                                                path = (os.getenv("TEMP") or "/tmp") .. "/nvim-theme"
-                                        },
-                                },
                         })
                 end
 
