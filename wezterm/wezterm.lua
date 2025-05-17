@@ -10,6 +10,7 @@ config.automatically_reload_config                = true
 
 -- appearance
 config.term                                       = "xterm-256color"
+config.color_scheme_dirs                          = { wezterm.home_dir .. "/.dotfiles/wezterm" }
 config.color_scheme                               = 'kanagawa-paper-ink'
 config.font                                       = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold" })
 config.font_size                                  = 10
