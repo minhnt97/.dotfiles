@@ -12,6 +12,18 @@ return {
 
         },
         {
+                "vague2k/vague.nvim",
+                lazy = false,
+                priority = 1000,
+                config = function()
+                        -- NOTE: you do not need to call setup if you don't want to.
+                        require("vague").setup({
+                                bold = false,
+                                italic = false,
+                        })
+                end
+        },
+        {
                 -- change status line display
                 "nvim-lualine/lualine.nvim",
                 dependencies = { "nvim-tree/nvim-web-devicons" },
