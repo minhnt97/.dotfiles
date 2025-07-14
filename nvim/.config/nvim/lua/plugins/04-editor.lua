@@ -62,16 +62,6 @@ return {
                 opts = {},
         },
         {
-                "OXY2DEV/markview.nvim",
-                lazy = false,
-                priority = 100,
-                opts = {
-                        experimental = {
-                                check_rtp_message = false,
-                        },
-                }
-        },
-        {
                 "toppair/peek.nvim",
                 event = { "VeryLazy" },
                 build = "deno task --quiet build:fast",
