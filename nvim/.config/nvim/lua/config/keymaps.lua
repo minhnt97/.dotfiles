@@ -30,6 +30,9 @@ map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Resize window right" })
 -- mappings for terminal mode
 map("t", "jk", "<C-\\><C-N>", { desc = "Exit insert mode in terminal" })
 
+-- mappings for terminal mode
+map({ 'n', 'v' }, '<leader>st', require('stay-centered').toggle, { desc = "Toggle stay centered" })
+
 -- mappings for telescope
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")

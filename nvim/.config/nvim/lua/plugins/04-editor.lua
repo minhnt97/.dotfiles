@@ -1,5 +1,8 @@
 return {
         {
+                'arnamak/stay-centered.nvim'
+        },
+        {
                 -- edit surrounding symbols
                 "kylechui/nvim-surround",
                 version = "*",
