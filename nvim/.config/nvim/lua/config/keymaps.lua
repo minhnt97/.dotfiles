@@ -230,7 +230,8 @@ map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" }
 map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 
 -- mappings for markdown preview
-map("n", "<leader>p", function()
+map("n", "<leader>p", require('render-markdown').toggle, { desc = "Toggle local markdown preview" })
+map("n", "<leader>P", function()
         local peek = require("peek")
         if peek.is_open()
         then
