@@ -20,9 +20,7 @@ return {
                 config = function()
                         local telescope = require("telescope")
                         local lga_actions = require("telescope-live-grep-args.actions")
-                        local actions = require("telescope.actions")
                         local open_with_trouble = require("trouble.sources.telescope").open
-                        local add_to_trouble = require("trouble.sources.telescope").add
 
                         -- setup everything
                         telescope.setup({
