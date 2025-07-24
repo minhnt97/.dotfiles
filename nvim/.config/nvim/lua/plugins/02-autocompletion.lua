@@ -95,16 +95,11 @@ return {
 			},
 
 			cmdline = {
-				keymap = { preset = "inherit" },
-				completion = {
-					menu = {
-						auto_show = function(ctx)
-							return vim.fn.getcmdtype() == ":"
-							-- enable for inputs as well, with:
-							-- or vim.fn.getcmdtype() == '@'
-						end,
-					},
+				keymap = {
+					preset = "inherit",
+					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
+				completion = { menu = { auto_show = true } },
 			},
 
 			fuzzy = { implementation = "prefer_rust_with_warning" },
