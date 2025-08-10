@@ -56,11 +56,6 @@ return {
                 config = true,
         },
         {
-                -- disable plugins in big files
-                "LunarVim/bigfile.nvim",
-                opts = {},
-        },
-        {
                 "Furkanzmc/zettelkasten.nvim",
                 opts = {},
         },
