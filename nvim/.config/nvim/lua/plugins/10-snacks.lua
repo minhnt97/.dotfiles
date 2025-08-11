@@ -14,7 +14,13 @@ return {
 				enabled = true,
 			},
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			matcher = {
+				frecency = true,
+				history_bonus = true,
+			},
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		words = { enabled = true },
