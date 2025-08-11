@@ -1,8 +1,8 @@
 local map = function(mode, lhs, rhs, opts)
-        opts = opts or {}
-        opts.noremap = true
-        opts.silent = true
-        vim.keymap.set(mode, lhs, rhs, opts)
+	opts = opts or {}
+	opts.noremap = true
+	opts.silent = true
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- mappings for moving between splits
@@ -27,72 +27,175 @@ map("n", "<C-w>l", require("smart-splits").swap_buf_right)
 map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Resize window right" })
 map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Resize window right" })
 
--- mappings for terminal mode
-map("t", "jk", "<C-\\><C-N>", { desc = "Exit insert mode in terminal" })
-
--- mappings for terminal mode
-map({ 'n', 'v' }, '<leader>st', require('stay-centered').toggle, { desc = "Toggle stay centered" })
+-- mappings for stay centered
+map({ "n", "v" }, "<leader>st", require("stay-centered").toggle, { desc = "Toggle stay centered" })
 
 -- mappings for snacks
 local Snacks = require("snacks")
--- Top Pickers & Explorer
-map("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
-map("n", "<leader>/", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
-map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
-map("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
-map("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
+
+-- Top Pickers
+map("n", "<leader><space>", function()
+	Snacks.picker.smart()
+end, { desc = "Smart Find Files" })
+
+map("n", "<leader>/", function()
+	Snacks.picker.lines()
+end, { desc = "Buffer Lines" })
+
+map("n", "<leader>:", function()
+	Snacks.picker.command_history()
+end, { desc = "Command History" })
+
 -- Find
-map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
-        { desc = "Find Config File" })
-map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
-map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
-map("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
-map("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
+map("n", "<leader>fb", function()
+	Snacks.picker.buffers()
+end, { desc = "Buffers" })
+
+map("n", "<leader>fc", function()
+	Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Find Config File" })
+
+map("n", "<leader>ff", function()
+	Snacks.picker.files()
+end, { desc = "Find Files" })
+
+map("n", "<leader>fg", function()
+	Snacks.picker.git_files()
+end, { desc = "Find Git Files" })
+
+map("n", "<leader>fp", function()
+	Snacks.picker.projects()
+end, { desc = "Projects" })
+
+map("n", "<leader>fr", function()
+	Snacks.picker.recent()
+end, { desc = "Recent" })
+
 -- Grep
-map("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
-map("n", "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
-map({ "n", "x" }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
+map("n", "<leader>sg", function()
+	Snacks.picker.grep()
+end, { desc = "Grep" })
+
+map("n", "<leader>sb", function()
+	Snacks.picker.grep_buffers()
+end, { desc = "Grep Open Buffers" })
+
+map({ "n", "x" }, "<leader>sw", function()
+	Snacks.picker.grep_word()
+end, { desc = "Visual selection or word" })
+
 -- Search
-map("n", '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
-map("n", '<leader>s/', function() Snacks.picker.search_history() end, { desc = "Search History" })
-map("n", "<leader>sa", function() Snacks.picker.autocmds() end, { desc = "Autocmds" })
-map("n", "<leader>sC", function() Snacks.picker.commands() end, { desc = "Commands" })
-map("n", "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
-map("n", "<leader>sH", function() Snacks.picker.highlights() end, { desc = "Highlights" })
-map("n", "<leader>si", function() Snacks.picker.icons() end, { desc = "Icons" })
-map("n", "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
-map("n", "<leader>sk", function() Snacks.picker.keymaps() end, { desc = "Keymaps" })
-map("n", "<leader>sl", function() Snacks.picker.loclist() end, { desc = "Location List" })
-map("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
-map("n", "<leader>sM", function() Snacks.picker.man() end, { desc = "Man Pages" })
-map("n", "<leader>sp", function() Snacks.picker.lazy() end, { desc = "Search for Plugin Spec" })
-map("n", "<leader>sq", function() Snacks.picker.qflist() end, { desc = "Quickfix List" })
-map("n", "<leader>sR", function() Snacks.picker.resume() end, { desc = "Resume" })
-map("n", "<leader>su", function() Snacks.picker.undo() end, { desc = "Undo History" })
-map("n", "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Colorschemes" })
+map("n", '<leader>s"', function()
+	Snacks.picker.registers()
+end, { desc = "Registers" })
+
+map("n", "<leader>s/", function()
+	Snacks.picker.search_history()
+end, { desc = "Search History" })
+
+map("n", "<leader>sa", function()
+	Snacks.picker.autocmds()
+end, { desc = "Autocmds" })
+
+map("n", "<leader>sC", function()
+	Snacks.picker.commands()
+end, { desc = "Commands" })
+
+map("n", "<leader>sh", function()
+	Snacks.picker.help()
+end, { desc = "Help Pages" })
+
+map("n", "<leader>sH", function()
+	Snacks.picker.highlights()
+end, { desc = "Highlights" })
+
+map("n", "<leader>si", function()
+	Snacks.picker.icons()
+end, { desc = "Icons" })
+
+map("n", "<leader>sj", function()
+	Snacks.picker.jumps()
+end, { desc = "Jumps" })
+
+map("n", "<leader>sk", function()
+	Snacks.picker.keymaps()
+end, { desc = "Keymaps" })
+
+map("n", "<leader>sm", function()
+	Snacks.picker.marks()
+end, { desc = "Marks" })
+
+map("n", "<leader>sM", function()
+	Snacks.picker.man()
+end, { desc = "Man Pages" })
+
+map("n", "<leader>sp", function()
+	Snacks.picker.lazy()
+end, { desc = "Search for Plugin Spec" })
+
+map("n", "<leader>uC", function()
+	Snacks.picker.colorschemes()
+end, { desc = "Colorschemes" })
+
 -- LSP pickers
-map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+map("n", "<leader>ss", function()
+	Snacks.picker.lsp_symbols()
+end, { desc = "LSP Symbols" })
+
+map("n", "<leader>sS", function()
+	Snacks.picker.lsp_workspace_symbols()
+end, { desc = "LSP Workspace Symbols" })
+
 -- Other
-map("n", "<leader>z", function() Snacks.zen() end, { desc = "Toggle Zen Mode" })
-map("n", "<leader>Z", function() Snacks.zen.zoom() end, { desc = "Toggle Zoom" })
-map("n", "<leader>.", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
-map("n", "<leader>S", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
-map("n", "<leader>n", function() Snacks.notifier.show_history() end, { desc = "Notification History" })
-map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
-map("n", "<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
-map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
-map("n", "<leader>un", function() Snacks.notifier.hide() end, { desc = "Dismiss All Notifications" })
-map("n", "<c-/>", function() Snacks.terminal() end, { desc = "Toggle Terminal" })
-map("n", "<c-_>", function() Snacks.terminal() end, { desc = "which_key_ignore" })
-map({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
-map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
+map("n", "<leader>z", function()
+	Snacks.zen()
+end, { desc = "Toggle Zen Mode" })
+
+map("n", "<leader>Z", function()
+	Snacks.zen.zoom()
+end, { desc = "Toggle Zoom" })
+
+map("n", "<leader>.", function()
+	Snacks.scratch()
+end, { desc = "Toggle Scratch Buffer" })
+
+map("n", "<leader>S", function()
+	Snacks.scratch.select()
+end, { desc = "Select Scratch Buffer" })
+
+map("n", "<leader>bd", function()
+	Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+
+map("n", "<leader>cR", function()
+	Snacks.rename.rename_file()
+end, { desc = "Rename File" })
+
+map("n", "<leader>gg", function()
+	Snacks.lazygit()
+end, { desc = "Lazygit" })
+
+map("n", "<c-/>", function()
+	Snacks.terminal()
+end, { desc = "Toggle Terminal" })
+
+map("n", "<c-_>", function()
+	Snacks.terminal()
+end, { desc = "which_key_ignore" })
+
+map({ "n", "t" }, "]]", function()
+	Snacks.words.jump(vim.v.count1)
+end, { desc = "Next Reference" })
+
+map({ "n", "t" }, "[[", function()
+	Snacks.words.jump(-vim.v.count1)
+end, { desc = "Prev Reference" })
 
 -- mappings for LSP display
 map("n", "<leader>ih", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "(LSP) Toggle inlay hint display" })
+
 map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "(LSP) Display signature help" })
 
 -- mappings for code actions
@@ -100,27 +203,27 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "(LSP) Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "(LSP) Code actions" })
 
 -- mappings for diagnostics
-map("n", "<leader>ee", "<cmd>Trouble diagnostics toggle toggle focus=true<CR>", { desc = "Diagnostics (Trouble)" })
-map("n", "<leader>EE", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+map("n", "<leader>ge", "<cmd>Trouble diagnostics toggle toggle focus=true<CR>", { desc = "Diagnostics (Trouble)" })
+map("n", "<leader>gE", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "(LSP) Go to next diagnostic position" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
 
 -- mappings for code navigations
 local hover = {
-        mapping = "K",
-        func = vim.lsp.buf.hover,
-        opts = { desc = "(LSP) Hover" },
+	mapping = "K",
+	func = vim.lsp.buf.hover,
+	opts = { desc = "(LSP) Hover" },
 }
 map("n", hover.mapping, hover.func, hover.opts)
 map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
 map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
-map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
+map("n", "gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
 map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
 map(
-        "n",
-        "<leader>gt",
-        "<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
-        { desc = "(LSP) Go to type_definitions" }
+	"n",
+	"<leader>gt",
+	"<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
+	{ desc = "(LSP) Go to type_definitions" }
 )
 
 -- generate doxygen
@@ -130,90 +233,90 @@ map("n", "<leader>nf", require("neogen").generate, { desc = "Generate doxygen" }
 local dap = require("dap")
 local dapui = require("dapui")
 map("n", "<Leader>dc", function()
-        if vim.fn.filereadable(".vscode/launch.json") then
-                require("dap.ext.vscode").load_launchjs()
-        end
-        dap.continue()
+	if vim.fn.filereadable(".vscode/launch.json") then
+		require("dap.ext.vscode").load_launchjs()
+	end
+	dap.continue()
 end, { desc = "(Debug) Continue/terminate session" })
 map("n", "<Leader>dr", function()
-        dap.restart()
+	dap.restart()
 end, { desc = "(Debug) Restart session" })
 map("n", "<Leader>dx", function()
-        dap.terminate()
+	dap.terminate()
 end, { desc = "(Debug) Terminate session" })
 
 -- mappings for debug actions
 map("n", "<Leader>di", function()
-        dap.step_into()
+	dap.step_into()
 end, { desc = "(Debug) Step into function" })
 map("n", "<Leader>do", function()
-        dap.step_out()
+	dap.step_out()
 end, { desc = "(Debug) Step out of function" })
 map("n", "<Leader>dv", function()
-        dap.step_over()
+	dap.step_over()
 end, { desc = "(Debug) Step over one line of codes" })
 
 -- mappings for console
 map("n", "<Leader>dt", function()
-        dapui.float_element("repl", {
-                enter = true,
-                position = "center",
-        })
+	dapui.float_element("repl", {
+		enter = true,
+		position = "center",
+	})
 end, { desc = "(Debug) Open debug terminal (repl)" })
 
 map("n", "<Leader>dT", function()
-        dapui.float_element("console", {
-                enter = true,
-                position = "center",
-        })
+	dapui.float_element("console", {
+		enter = true,
+		position = "center",
+	})
 end, { desc = "(Debug) Open debug console" })
 
 -- mappings for breakpoint control
 map("n", "<Leader>bt", function()
-        dap.toggle_breakpoint()
+	dap.toggle_breakpoint()
 end, { desc = "(Debug) Toggle breakpoint" })
 map("n", "<Leader>bl", function()
-        dap.list_breakpoints()
-        vim.cmd.copen()
+	dap.list_breakpoints()
+	vim.cmd.copen()
 end, { desc = "(Debug) List breakpoints" })
 map("n", "<Leader>bx", function()
-        dap.clear_breakpoints()
+	dap.clear_breakpoints()
 end, { desc = "(Debug) Clear all breakpoints" })
 
 -- mappings for watch related actions
 map("n", "<Leader>ds", function()
-        dapui.float_element("scopes", {
-                enter = true,
-        })
+	dapui.float_element("scopes", {
+		enter = true,
+	})
 end, { desc = "(Debug) Open scopes" })
 map("n", "<Leader>df", function()
-        dapui.float_element("stacks", {
-                enter = true,
-        })
+	dapui.float_element("stacks", {
+		enter = true,
+	})
 end, { desc = "(Debug) Open call stacks" })
 map("n", "<Leader>dw", function()
-        dapui.float_element("watches", {
-                enter = true,
-        })
+	dapui.float_element("watches", {
+		enter = true,
+	})
 end, { desc = "(Debug) Open watches" })
 
 map("n", "<Leader>dh", "<cmd>DapVirtualTextToggle<CR>", { desc = "(Debug) Toggle virtual text" })
 -- use K for both LSP and DAP hover
 dap.listeners.after.attach.config_hover_key = function()
-        map("n", "K", function()
-                dapui.eval(nil, { enter = true })
-        end, { desc = "(Debug) Hover" })
+	map("n", "K", function()
+		dapui.eval(nil, { enter = true })
+	end, { desc = "(Debug) Hover" })
 end
 dap.listeners.before.event_terminated.recover_lsp_keys = function()
-        map("n", hover.mapping, hover.func, hover.opts)
+	map("n", hover.mapping, hover.func, hover.opts)
 end
 dap.listeners.before.event_exited.recover_lsp_keys = function()
-        map("n", hover.mapping, hover.func, hover.opts)
+	map("n", hover.mapping, hover.func, hover.opts)
 end
 
 -- mappings for UI
 map("n", "<Leader>du", function()
-        dapui.toggle()
+	dapui.toggle()
 end, { desc = "(Debug) Toggle UI" })
 
 -- mappings for undo tree
@@ -230,83 +333,81 @@ map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" }
 map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 
 -- mappings for markdown preview
-map("n", "<leader>p", require('render-markdown').toggle, { desc = "Toggle local markdown preview" })
+map("n", "<leader>p", require("render-markdown").toggle, { desc = "Toggle local markdown preview" })
 map("n", "<leader>P", function()
-        local peek = require("peek")
-        if peek.is_open()
-        then
-                peek.close()
-        else
-                peek.open()
-        end
+	local peek = require("peek")
+	if peek.is_open() then
+		peek.close()
+	else
+		peek.open()
+	end
 end, { desc = "Toggle web markdown preview" })
 
 -- mappings for file tree toggle
 map("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", { desc = "Toggle file-tree in float window" })
-map("n", "<leader>el", ":Neotree toggle left reveal_force_cwd <cr>", { desc = "Toggle file-tree in left-side pane" })
+map("n", "<leader>ee", ":Neotree toggle left reveal_force_cwd <cr>", { desc = "Toggle file-tree in left-side pane" })
 
 -- mappings for gitsigns
 require("gitsigns").setup({
-        on_attach = function(bufnr)
-                local gitsigns = require("gitsigns")
+	on_attach = function(bufnr)
+		local gitsigns = require("gitsigns")
 
-                local function map_gitsign(mode, l, r, opts)
-                        opts = opts or {}
-                        opts.buffer = bufnr
-                        map(mode, l, r, opts)
-                end
+		local function map_gitsign(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			map(mode, l, r, opts)
+		end
 
-                -- Navigation
-                map_gitsign("n", "]c", function()
-                        if vim.wo.diff then
-                                vim.cmd.normal({ "]c", bang = true })
-                        else
-                                gitsigns.nav_hunk("next")
-                        end
-                end, { desc = "(Gitsigns) Move to next hunk" })
+		-- Navigation
+		map_gitsign("n", "]c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ "]c", bang = true })
+			else
+				gitsigns.nav_hunk("next")
+			end
+		end, { desc = "(Gitsigns) Move to next hunk" })
 
-                map_gitsign("n", "[c", function()
-                        if vim.wo.diff then
-                                vim.cmd.normal({ "[c", bang = true })
-                        else
-                                gitsigns.nav_hunk("prev")
-                        end
-                end, { desc = "(Gitsigns) Move to prev hunk" })
+		map_gitsign("n", "[c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ "[c", bang = true })
+			else
+				gitsigns.nav_hunk("prev")
+			end
+		end, { desc = "(Gitsigns) Move to prev hunk" })
 
-                -- Stage/unstage hunk & buffer
-                map_gitsign("n", "<leader>hs", gitsigns.stage_hunk, { desc = "(Gitsigns) Stage this hunk" })
-                map_gitsign("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "(Gitsigns) Unstage this hunk" })
-                map_gitsign("v", "<leader>hs", function()
-                        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "(Gitsigns) Stage this hunk" })
-                map_gitsign("n", "<leader>hS", gitsigns.stage_buffer, { desc = "(Gitsigns) Stage this buffer" })
+		-- Stage/unstage hunk & buffer
+		map_gitsign("n", "<leader>hs", gitsigns.stage_hunk, { desc = "(Gitsigns) Stage this hunk" })
+		map_gitsign("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "(Gitsigns) Unstage this hunk" })
+		map_gitsign("v", "<leader>hs", function()
+			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end, { desc = "(Gitsigns) Stage this hunk" })
+		map_gitsign("n", "<leader>hS", gitsigns.stage_buffer, { desc = "(Gitsigns) Stage this buffer" })
 
-                -- Reset hunk & buffer
-                map_gitsign("n", "<leader>hr", gitsigns.reset_hunk, { desc = "(Gitsigns) Reset this hunk" })
-                map_gitsign("v", "<leader>hr", function()
-                        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "(Gitsigns) Reset this hunk" })
-                map_gitsign("n", "<leader>hR", gitsigns.reset_buffer, { desc = "(Gitsigns) Restore this buffer" })
+		-- Reset hunk & buffer
+		map_gitsign("n", "<leader>hr", gitsigns.reset_hunk, { desc = "(Gitsigns) Reset this hunk" })
+		map_gitsign("v", "<leader>hr", function()
+			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end, { desc = "(Gitsigns) Reset this hunk" })
+		map_gitsign("n", "<leader>hR", gitsigns.reset_buffer, { desc = "(Gitsigns) Restore this buffer" })
 
-                -- Compare hunks , deleted
-                map_gitsign("n", "<leader>hp", gitsigns.preview_hunk, { desc = "(Gitsigns) Preview this hunk" })
-                map_gitsign("n", "<leader>hd", gitsigns.toggle_deleted,
-                        { desc = "(Gitsigns) Toggle deleted sections display" })
+		-- Compare hunks , deleted
+		map_gitsign("n", "<leader>hp", gitsigns.preview_hunk, { desc = "(Gitsigns) Preview this hunk" })
+		map_gitsign("n", "<leader>hd", gitsigns.toggle_deleted, { desc = "(Gitsigns) Toggle deleted sections display" })
 
-                -- Blame
-                map_gitsign(
-                        "n",
-                        "<leader>lb",
-                        gitsigns.toggle_current_line_blame,
-                        { desc = "(Gitsigns) Toggle current line blame info" }
-                )
-                map_gitsign("n", "<leader>hb", function()
-                        gitsigns.blame_line({ full = true })
-                end, { desc = "(Gitsigns) Display current hunk blame" })
+		-- Blame
+		map_gitsign(
+			"n",
+			"<leader>lb",
+			gitsigns.toggle_current_line_blame,
+			{ desc = "(Gitsigns) Toggle current line blame info" }
+		)
+		map_gitsign("n", "<leader>hb", function()
+			gitsigns.blame_line({ full = true })
+		end, { desc = "(Gitsigns) Display current hunk blame" })
 
-                -- Text object
-                map_gitsign({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "(Gitsigns) Select hunk" })
-        end,
+		-- Text object
+		map_gitsign({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "(Gitsigns) Select hunk" })
+	end,
 })
 
 -- mappings for neogit

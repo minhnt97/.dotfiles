@@ -1,3 +1,3 @@
 require("zettelkasten").setup({
-        notes_path = "",
+	notes_path = "",
 })

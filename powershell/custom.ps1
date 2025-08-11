@@ -1,11 +1,9 @@
-# show git status
 function gs {
         git status
 }
 
-# edit file searched by fzf
 function nf {
-        $selectedFile = fzf
+        $selectedFile = $(fzf --preview="bat {}")
 
         if ($selectedFile)
         {
@@ -13,12 +11,15 @@ function nf {
         }
 }
 
+function ff {
+         fzf --preview="bat {}"
+}
+
 # Shows navigable menu of all options when hitting Tab
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-# Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+# Use PSCompletions
+Import-Module PSCompletions
 
 # Install posh-git for git autocompletion
 Import-Module posh-git
