@@ -21,8 +21,8 @@ return {
 		opts = {
 			keymap = {
 				preset = "enter",
-				["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
 				["<Tab>"] = { "select_next", "fallback_to_mappings" },
+				["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
 			},
 
 			appearance = { nerd_font_variant = "mono" },
@@ -96,8 +96,8 @@ return {
 
 			cmdline = {
 				keymap = {
-					preset = "inherit",
-					["<CR>"] = { "accept_and_enter", "fallback" },
+					["<Tab>"] = { "show", "select_next" },
+					["<S-Tab>"] = { "show", "select_prev" },
 				},
 				completion = { menu = { auto_show = true } },
 			},
