@@ -24,6 +24,9 @@ return {
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		words = { enabled = true },
+		notifier = {
+			enabled = true,
+		},
 	},
 	keys = {},
 	init = function()

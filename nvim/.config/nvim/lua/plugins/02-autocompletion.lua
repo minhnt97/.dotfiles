@@ -94,14 +94,6 @@ return {
 				},
 			},
 
-			cmdline = {
-				keymap = {
-					["<Tab>"] = { "show", "select_next" },
-					["<S-Tab>"] = { "show", "select_prev" },
-				},
-				completion = { menu = { auto_show = true } },
-			},
-
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
