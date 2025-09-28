@@ -217,7 +217,7 @@ local hover = {
 map("n", hover.mapping, hover.func, hover.opts)
 map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
 map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
-map("n", "gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
+map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
 map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
 map(
 	"n",
