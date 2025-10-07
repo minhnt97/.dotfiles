@@ -6,8 +6,13 @@ return {
 		config = function()
 			require("kanagawa-paper").setup({
 				dim_inactive = true,
-                gutter = true,
+				gutter = true,
 				cache = true,
+				overrides = function(colors)
+					return {
+						["@lsp.type.comment"] = { fg = colors.theme.syn.comment },
+					}
+				end,
 			})
 		end,
 	},
