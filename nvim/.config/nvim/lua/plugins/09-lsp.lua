@@ -35,16 +35,12 @@ return {
 				settings = {
 					cmd = {
 						"clangd",
-						"--all-scopes-completion",
 						"--background-index",
 						"--clang-tidy",
 						"--header-insertion=never",
 						"--limit-references=0",
 						"--limit-results=0",
 						"--rename-file-limit=0",
-					},
-					init_options = {
-						fallbackFlags = { "-std=c++11" },
 					},
 				},
 			}
