@@ -16,9 +16,23 @@ return {
 		},
 		picker = {
 			enabled = true,
+			layout = {
+				cycle = true,
+				--- Use the default layout or vertical if the window is too narrow
+				preset = function()
+					return vim.o.columns >= 160 and "default" or "vertical"
+				end,
+			},
 			matcher = {
 				frecency = true,
 				history_bonus = true,
+			},
+			win = {
+				input = {
+					keys = {
+						["<c-x>"] = { "edit_split", mode = { "i", "n" } },
+					},
+				},
 			},
 		},
 		quickfile = { enabled = true },
