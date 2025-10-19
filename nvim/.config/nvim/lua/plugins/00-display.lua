@@ -6,7 +6,7 @@ return {
 		config = function()
 			require("kanagawa-paper").setup({
 				dim_inactive = true,
-				gutter = true,
+				gutter = false,
 				cache = true,
 				overrides = function(colors)
 					return {
