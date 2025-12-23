@@ -23,12 +23,8 @@ return {
 			legacy_commands = false, -- this will be removed in the next major release
 			workspaces = {
 				{
-					name = "personal",
-					path = "~/notes/personal",
-				},
-				{
-					name = "work",
-					path = "~/notes/work",
+					name = "notes",
+					path = "~/notes",
 				},
 			},
 		},
