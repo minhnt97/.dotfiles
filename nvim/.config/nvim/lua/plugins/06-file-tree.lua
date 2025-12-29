@@ -1,43 +1,31 @@
 return {
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim",
-			{
-				"s1n7ax/nvim-window-picker",
-				version = "2.*",
-				config = function()
-					require("window-picker").setup({
-						filter_rules = {
-							include_current_win = false,
-							autoselect_one = true,
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { "terminal", "quickfix" },
-							},
-						},
-					})
-				end,
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {
+			keymaps = {
+				["g?"] = { "actions.show_help", mode = "n" },
+				["l"] = "actions.select",
+				["v"] = { "actions.select", opts = { vertical = true } },
+				["s"] = { "actions.select", opts = { horizontal = true } },
+				["t"] = { "actions.select", opts = { tab = true } },
+				["p"] = "actions.preview",
+				["q"] = { "actions.close", mode = "n" },
+				["r"] = "actions.refresh",
+				["h"] = { "actions.parent", mode = "n" },
+				["_"] = { "actions.open_cwd", mode = "n" },
+				["`"] = { "actions.cd", mode = "n" },
+				["g~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+				["gs"] = { "actions.change_sort", mode = "n" },
+				["gx"] = "actions.open_external",
+				["g."] = { "actions.toggle_hidden", mode = "n" },
+				["g\\"] = { "actions.toggle_trash", mode = "n" },
 			},
 		},
-		config = function()
-			require("neo-tree").setup({
-				filesystem = {
-					window = {
-						mappings = {
-							["h"] = "navigate_up",
-							["l"] = "open",
-						},
-					},
-				},
-			})
-		end,
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
 	},
 }

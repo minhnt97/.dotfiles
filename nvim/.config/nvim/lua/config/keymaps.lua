@@ -254,8 +254,7 @@ map("n", "<leader>P", function()
 end, { desc = "Toggle web markdown preview" })
 
 -- mappings for file tree toggle
-map("n", "<leader>ef", ":Neotree toggle float reveal_force_cwd<cr>", { desc = "Toggle file-tree in float window" })
-map("n", "<leader>ee", ":Neotree toggle left reveal_force_cwd <cr>", { desc = "Toggle file-tree in left-side pane" })
+map("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open file tree" })
 
 -- mappings for gitsigns
 require("gitsigns").setup({
