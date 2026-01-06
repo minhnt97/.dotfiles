@@ -6,9 +6,12 @@ return {
 		opts = {
 			columns = {
 				"icon",
+				"type",
 				"size",
 				"mtime",
 			},
+			use_default_keymaps = false,
+			watch_for_changes = true,
 			keymaps = {
 				["g?"] = { "actions.show_help", mode = "n" },
 				["l"] = "actions.select",
