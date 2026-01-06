@@ -13,7 +13,7 @@ config.term = "xterm-256color"
 config.color_scheme_dirs = { os.getenv("LOCALAPPDATA") .. "/nvim-data/lazy/kanagawa-paper.nvim/extras/wezterm" }
 config.color_scheme = "kanagawa-paper-ink"
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold" })
-config.font_size = 10
+config.font_size = 10.50
 config.window_padding = {
 	left = 5,
 	right = 5,
