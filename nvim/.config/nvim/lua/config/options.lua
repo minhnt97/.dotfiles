@@ -16,5 +16,8 @@ vim.g.mapleader = " "
 -- Show cursor line
 vim.o.cursorline = true
 
+-- Set conceal level
+vim.o.conceallevel = 2
+
 -- No adding end of file
 vim.cmd("set nofixendofline")
