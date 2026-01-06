@@ -4,15 +4,20 @@ return {
 		---@module 'oil'
 		---@type oil.SetupOpts
 		opts = {
+			columns = {
+				"icon",
+				"size",
+				"mtime",
+			},
 			keymaps = {
 				["g?"] = { "actions.show_help", mode = "n" },
 				["l"] = "actions.select",
-				["v"] = { "actions.select", opts = { vertical = true } },
-				["s"] = { "actions.select", opts = { horizontal = true } },
-				["t"] = { "actions.select", opts = { tab = true } },
-				["p"] = "actions.preview",
+				["<C-v>"] = { "actions.select", opts = { vertical = true } },
+				["<C-x>"] = { "actions.select", opts = { horizontal = true } },
+				["<C-t>"] = { "actions.select", opts = { tab = true } },
+				["<C-p>"] = "actions.preview",
 				["q"] = { "actions.close", mode = "n" },
-				["r"] = "actions.refresh",
+				["<C-r>"] = "actions.refresh",
 				["h"] = { "actions.parent", mode = "n" },
 				["_"] = { "actions.open_cwd", mode = "n" },
 				["`"] = { "actions.cd", mode = "n" },

@@ -22,12 +22,6 @@ return {
 		},
 		config = function()
 			require("noice").setup({
-				lsp = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-					},
-				},
 				presets = {
 					lsp_doc_border = true,
 				},
@@ -72,14 +66,5 @@ return {
 		config = function()
 			require("illuminate").configure({})
 		end,
-	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
 	},
 }

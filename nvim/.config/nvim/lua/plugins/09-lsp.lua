@@ -9,9 +9,6 @@ return {
 			local servers = {
 				"lua_ls",
 				"clangd",
-				"lemminx",
-				"cmake",
-				"marksman",
 			}
 
 			-- install mason

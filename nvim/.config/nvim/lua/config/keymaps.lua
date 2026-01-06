@@ -171,7 +171,7 @@ map("n", "<leader>cR", function()
 	Snacks.rename.rename_file()
 end, { desc = "Rename File" })
 
-map("n", "<leader>gg", function()
+map("n", "<leader>lg", function()
 	Snacks.lazygit()
 end, { desc = "Lazygit" })
 
@@ -227,7 +227,7 @@ map(
 )
 
 -- generate doxygen
-map("n", "<leader>nf", require("neogen").generate, { desc = "Generate doxygen" })
+map("n", "<leader>dg", require("neogen").generate, { desc = "Generate doxygen" })
 
 -- mappings for undo tree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })
@@ -243,8 +243,7 @@ map("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Move to next location list" }
 map("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Move to previous location list" })
 
 -- mappings for markdown preview
-map("n", "<leader>p", require("render-markdown").toggle, { desc = "Toggle local markdown preview" })
-map("n", "<leader>P", function()
+map("n", "<leader>p", function()
 	local peek = require("peek")
 	if peek.is_open() then
 		peek.close()
