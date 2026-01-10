@@ -45,12 +45,6 @@ return {
 		config = true,
 	},
 	{
-		-- for better workflow
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		config = true,
-	},
-	{
 		-- commenting codes
 		"numToStr/Comment.nvim",
 		config = true,
@@ -69,6 +63,7 @@ return {
 
 			require("barbecue").setup({
 				create_autocmd = false, -- prevent barbecue from updating itself automatically
+				exclude_filetypes = { "netrw", "toggleterm", "diffview" },
 			})
 
 			vim.api.nvim_create_autocmd({

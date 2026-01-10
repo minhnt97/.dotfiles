@@ -8,7 +8,15 @@ return {
 				dim_inactive = true,
 				overrides = function(colors)
 					return {
+						-- use comment color
 						["@lsp.type.comment"] = { fg = colors.theme.syn.comment },
+
+						-- remove the strikethrough
+						DiffDelete = {
+							bg = colors.theme.diff.delete_light,
+							fg = colors.theme.vcs.removed,
+							strikethrough = false,
+						},
 					}
 				end,
 			})
