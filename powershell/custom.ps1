@@ -42,4 +42,4 @@ Import-Module PSCompletions
 Import-Module posh-git
 
 # Load prompt theme
-oh-my-posh init pwsh --config ~/.dotfiles/oh-my-posh/custom.json | Invoke-Expression
+oh-my-posh init pwsh --config ~/.dotfiles/oh-my-posh/with_git.json | Invoke-Expression

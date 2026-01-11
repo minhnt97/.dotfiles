@@ -97,4 +97,4 @@ alias c='clear'
 source <(fzf --zsh)
 
 # set oh-my-posh theme
-eval "$(oh-my-posh init zsh --config ~/.dotfiles/oh-my-posh/custom.json)"
+eval "$(oh-my-posh init zsh --config ~/.dotfiles/oh-my-posh/with_git.json)"
