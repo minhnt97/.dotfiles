@@ -183,14 +183,6 @@ map("n", "<c-_>", function()
 	Snacks.terminal()
 end, { desc = "which_key_ignore" })
 
-map({ "n", "t" }, "]]", function()
-	Snacks.words.jump(vim.v.count1)
-end, { desc = "Next Reference" })
-
-map({ "n", "t" }, "[[", function()
-	Snacks.words.jump(-vim.v.count1)
-end, { desc = "Prev Reference" })
-
 -- mappings for LSP display
 map("n", "<leader>ih", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
