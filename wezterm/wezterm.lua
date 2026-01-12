@@ -26,8 +26,8 @@ config.use_fancy_tab_bar = true
 config.tab_max_width = 32
 config.hide_tab_bar_if_only_one_tab = true
 config.inactive_pane_hsb = {
-	saturation = 1.0,
-	brightness = 1.0,
+	saturation = 0.9,
+	brightness = 0.8,
 }
 
 -- tab manage
