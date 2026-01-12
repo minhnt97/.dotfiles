@@ -27,7 +27,7 @@
             }
           },
           "template": " \ue795 {{ .Name }}"
-        },
+        }
       ],
       "type": "prompt"
     },
