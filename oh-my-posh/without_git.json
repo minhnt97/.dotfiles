@@ -21,7 +21,7 @@
           "properties": {
             "mapped_shell_names": {
               "pwsh": "Pwsh",
-              "powershell": "Shell",
+              "powershell": "PowerShell",
               "cmd": "Cmd",
               "bash": "Bash"
             }
