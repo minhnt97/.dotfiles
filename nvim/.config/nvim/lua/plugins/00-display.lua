@@ -1,5 +1,22 @@
 return {
 	{
+		-- hightlight codes
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		lazy = false,
+		build = ":TSUpdate",
+		run = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = { "markdown", "markdown_inline" },
+				auto_install = true,
+				highlight = { enable = true },
+			})
+		end,
+	},
+	{
 		"thesimonho/kanagawa-paper.nvim",
 		lazy = false,
 		priority = 1000,
@@ -47,20 +64,16 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "selectioncount" },
+					lualine_b = { "branch" },
 					lualine_c = {
-						{
-							"filename",
-							path = 5,
-						},
-					},
-					lualine_x = {
-						"filetype",
 						{
 							require("noice").api.statusline.mode.get,
 							cond = require("noice").api.statusline.mode.has,
-							color = { fg = "#ff9e64" },
 						},
+						"selectioncount",
+					},
+					lualine_x = {
+						"lspstatus",
 					},
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -90,10 +103,12 @@ return {
 			require("barbecue").setup({
 				create_autocmd = false, -- prevent barbecue from updating itself automatically
 				exclude_filetypes = { "netrw", "toggleterm", "diffview" },
+                show_dirname = false,
+                show_modified = true,
 			})
 
 			vim.api.nvim_create_autocmd({
-				"WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+				"WinResized", -- or WinResized on NVIM-v0.9 and higher
 				"BufWinEnter",
 				"CursorHold",
 				"InsertLeave",
