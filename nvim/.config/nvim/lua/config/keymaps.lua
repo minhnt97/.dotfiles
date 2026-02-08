@@ -23,6 +23,10 @@ map("n", "<C-w>j", require("smart-splits").swap_buf_down)
 map("n", "<C-w>k", require("smart-splits").swap_buf_up)
 map("n", "<C-w>l", require("smart-splits").swap_buf_right)
 
+-- mappings for moving between tabs
+map("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Next tab", unique = true })
+map("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab", unique = true })
+
 -- mappings for auto window size toggle
 map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Resize window right" })
 map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Resize window right" })
@@ -310,12 +314,11 @@ require("gitsigns").setup({
 	end,
 })
 
--- mappings for neogit
-map("n", "<leader>ng", "<cmd>Neogit<cr>", { desc = "Open neogit" })
-
 -- mappings for formatting
 map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
 map("v", "<leader>f", "<cmd>Format<cr>", { desc = "Format this selection" })
 
 -- mappings for note-taking using Obsidian
 map("n", "<leader>no", "<cmd>Obsidian<cr>", { desc = "Open Obsidian" })
+map("n", "<leader>nt", "<cmd>Obsidian tags<cr>", { desc = "Search Obsidian Tags" })
+map("n", "<leader>ns", "<cmd>Obsidian search<cr>", { desc = "Search Obsidian Contents" })
