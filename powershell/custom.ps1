@@ -13,6 +13,8 @@ function gs {
         git status
 }
 
+$env:EDITOR = "nvim"
+
 $env:LG_CONFIG_FILE = "$HOME\.dotfiles\lazygit\.config\lazygit\config.yml,$env:LOCALAPPDATA\nvim-data\lazy\kanagawa-paper.nvim\extras\lazygit\kanagawa-paper-ink.yml"
 
 function lg {
