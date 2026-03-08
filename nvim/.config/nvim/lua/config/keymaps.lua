@@ -24,8 +24,8 @@ map("n", "<C-w>k", require("smart-splits").swap_buf_up)
 map("n", "<C-w>l", require("smart-splits").swap_buf_right)
 
 -- mappings for moving between tabs
-map("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Next tab", unique = true })
-map("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab", unique = true })
+-- map("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Next tab", unique = true })
+-- map("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab", unique = true })
 
 -- mappings for auto window size toggle
 map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Resize window right" })
