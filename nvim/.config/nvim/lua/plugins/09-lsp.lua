@@ -3,74 +3,20 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
-			"williamboman/mason.nvim",
+			{
+				"williamboman/mason.nvim",
+				opts = {
+					ui = {
+						icons = {
+							package_pending = " ",
+							package_installed = " ",
+							package_uninstalled = " ",
+						},
+					},
+				},
+			},
 		},
-		config = function()
-			local servers = {
-				"lua_ls",
-				"clangd",
-			}
-
-			-- install mason
-			require("mason").setup({
-				ui = {
-					icons = {
-						package_pending = " ",
-						package_installed = " ",
-						package_uninstalled = " ",
-					},
-				},
-			})
-
-			-- ensure these servers are installed by mason
-			require("mason-lspconfig").setup({
-				ensure_installed = servers,
-			})
-
-			-- configure all LSPs
-			local capabilities = {
-				textDocument = {
-					semanticTokens = {
-						multilineTokenSupport = true,
-					},
-					foldingRange = {
-						dynamicRegistration = false,
-						lineFoldingOnly = true,
-					},
-				},
-			}
-
-			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
-			vim.lsp.config("*", {
-				capabilities = capabilities,
-			})
-
-			-- specific configuration
-			vim.lsp.config["clangd"] = {
-				settings = {
-					cmd = {
-						"clangd",
-						"--background-index",
-						"--offset-encoding=utf-8",
-						"--clang-tidy",
-						"--header-insertion=never",
-						"--limit-references=0",
-						"--limit-results=0",
-						"--rename-file-limit=0",
-					},
-					filetypes = { "c", "cpp" },
-				},
-			}
-
-			-- enable server
-			for _, lsp in ipairs(servers) do
-				vim.lsp.enable(lsp)
-			end
-
-			-- disable diagnostics display to use tiny line
-			vim.diagnostic.config({ virtual_text = false })
-		end,
+		config = function() end,
 	},
 	{
 		"folke/trouble.nvim",

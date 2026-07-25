@@ -1,20 +1,8 @@
 return {
 	{
-		-- hightlight codes
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
 		lazy = false,
 		build = ":TSUpdate",
-		run = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "markdown", "markdown_inline" },
-				auto_install = true,
-				highlight = { enable = true },
-			})
-		end,
 	},
 	{
 		"thesimonho/kanagawa-paper.nvim",
@@ -26,19 +14,6 @@ return {
 		config = function()
 			require("kanagawa-paper").setup({
 				dim_inactive = true,
-				overrides = function(colors)
-					return {
-						-- use comment color
-						["@lsp.type.comment"] = { fg = colors.theme.syn.comment },
-
-						-- remove the strikethrough
-						DiffDelete = {
-							bg = colors.theme.diff.delete_light,
-							fg = colors.theme.vcs.removed,
-							strikethrough = false,
-						},
-					}
-				end,
 			})
 		end,
 	},

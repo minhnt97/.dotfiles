@@ -25,7 +25,6 @@ return {
 					cpp = { "clang-format" },
 					lua = { "stylua" },
 					python = { "isort", "black" },
-					-- json = { "biome" },
 					["_"] = { "prettierd", "prettier" },
 				},
 			})
