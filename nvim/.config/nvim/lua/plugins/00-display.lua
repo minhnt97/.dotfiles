@@ -59,7 +59,21 @@ return {
 	{
 		-- change status line display
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			{
+				"SmiteshP/nvim-navic",
+				config = function()
+					require("nvim-navic").setup({
+						highlight = true,
+						depth_limit = 0,
+						lsp = {
+							auto_attach = true,
+						},
+					})
+				end,
+			},
+		},
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -79,8 +93,20 @@ return {
 							"filename",
 							filestatus = true,
 							newfile_status = true,
-							path = 1,
+							path = 0,
 							shorting_target = 80,
+						},
+						{
+							"navic",
+							-- Component specific options
+							color_correction = "dynamic", -- Can be nil, "static" or "dynamic". This option is useful only when you have highlights enabled.
+							-- Many colorschemes don't define same backgroud for nvim-navic as their lualine statusline backgroud.
+							-- Setting it to "static" will perform a adjustment once when the component is being setup. This should
+							--   be enough when the lualine section isn't changing colors based on the mode.
+							-- Setting it to "dynamic" will keep updating the highlights according to the current modes colors for
+							--   the current section.
+
+							navic_opts = nil, -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
 						},
 					},
 					lualine_x = { "lspstatus" },
@@ -111,41 +137,6 @@ return {
 		"RRethy/vim-illuminate",
 		config = function()
 			require("illuminate").configure({})
-		end,
-	},
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-		config = function()
-			-- triggers CursorHold event faster
-			vim.opt.updatetime = 200
-
-			require("barbecue").setup({
-				create_autocmd = false, -- prevent barbecue from updating itself automatically
-				exclude_filetypes = { "netrw", "toggleterm", "diffview" },
-				show_dirname = false,
-				show_modified = true,
-			})
-
-			vim.api.nvim_create_autocmd({
-				"WinResized", -- or WinResized on NVIM-v0.9 and higher
-				"BufWinEnter",
-				"CursorHold",
-				"InsertLeave",
-
-				-- include this if you have set `show_modified` to `true`
-				"BufModifiedSet",
-			}, {
-				group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-				callback = function()
-					require("barbecue.ui").update()
-				end,
-			})
 		end,
 	},
 	{

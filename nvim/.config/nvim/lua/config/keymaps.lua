@@ -245,69 +245,6 @@ end, { desc = "Toggle web markdown preview" })
 -- mappings for file tree toggle
 map("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Open file tree" })
 
--- mappings for gitsigns
-require("gitsigns").setup({
-	on_attach = function(bufnr)
-		local gitsigns = require("gitsigns")
-
-		local function map_gitsign(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			map(mode, l, r, opts)
-		end
-
-		-- Navigation
-		map_gitsign("n", "]c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "]c", bang = true })
-			else
-				gitsigns.nav_hunk("next")
-			end
-		end, { desc = "(Gitsigns) Move to next hunk" })
-
-		map_gitsign("n", "[c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "[c", bang = true })
-			else
-				gitsigns.nav_hunk("prev")
-			end
-		end, { desc = "(Gitsigns) Move to prev hunk" })
-
-		-- Stage/unstage hunk & buffer
-		map_gitsign("n", "<leader>hs", gitsigns.stage_hunk, { desc = "(Gitsigns) Stage this hunk" })
-		map_gitsign("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "(Gitsigns) Unstage this hunk" })
-		map_gitsign("v", "<leader>hs", function()
-			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end, { desc = "(Gitsigns) Stage this hunk" })
-		map_gitsign("n", "<leader>hS", gitsigns.stage_buffer, { desc = "(Gitsigns) Stage this buffer" })
-
-		-- Reset hunk & buffer
-		map_gitsign("n", "<leader>hr", gitsigns.reset_hunk, { desc = "(Gitsigns) Reset this hunk" })
-		map_gitsign("v", "<leader>hr", function()
-			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end, { desc = "(Gitsigns) Reset this hunk" })
-		map_gitsign("n", "<leader>hR", gitsigns.reset_buffer, { desc = "(Gitsigns) Restore this buffer" })
-
-		-- Compare hunks , deleted
-		map_gitsign("n", "<leader>hp", gitsigns.preview_hunk, { desc = "(Gitsigns) Preview this hunk" })
-		map_gitsign("n", "<leader>hd", gitsigns.toggle_deleted, { desc = "(Gitsigns) Toggle deleted sections display" })
-
-		-- Blame
-		map_gitsign(
-			"n",
-			"<leader>lb",
-			gitsigns.toggle_current_line_blame,
-			{ desc = "(Gitsigns) Toggle current line blame info" }
-		)
-		map_gitsign("n", "<leader>hb", function()
-			gitsigns.blame_line({ full = true })
-		end, { desc = "(Gitsigns) Display current hunk blame" })
-
-		-- Text object
-		map_gitsign({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "(Gitsigns) Select hunk" })
-	end,
-})
-
 -- mappings for formatting
 map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
 map("v", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this selection" })
@@ -318,5 +255,6 @@ map("n", "zC", require("ufo").closeAllFolds, { desc = "Close All Folds" })
 
 -- mappings for note-taking using Obsidian
 map("n", "<leader>no", "<cmd>Obsidian<cr>", { desc = "Open Obsidian" })
+map("n", "<leader>nn", "<cmd>Obsidian new<cr>", { desc = "New Obsidian Note" })
 map("n", "<leader>nt", "<cmd>Obsidian tags<cr>", { desc = "Search Obsidian Tags" })
 map("n", "<leader>ns", "<cmd>Obsidian search<cr>", { desc = "Search Obsidian Contents" })
