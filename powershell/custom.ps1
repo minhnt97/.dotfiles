@@ -10,8 +10,13 @@ function prompt {
 }
 
 function gs {
-        git status
+        git status --untracked-files=no
 }
+
+function gsu {
+        git status 
+}
+
 
 $env:EDITOR = "nvim"
 
@@ -44,4 +49,4 @@ Import-Module PSCompletions
 Import-Module posh-git
 
 # Load prompt theme
-oh-my-posh init pwsh --config ~/.dotfiles/oh-my-posh/with_git.json | Invoke-Expression
+oh-my-posh init pwsh --config ~/.dotfiles/oh-my-posh/without_git.json | Invoke-Expression

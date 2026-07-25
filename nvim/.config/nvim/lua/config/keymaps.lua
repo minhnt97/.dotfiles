@@ -23,10 +23,6 @@ map("n", "<C-w>j", require("smart-splits").swap_buf_down)
 map("n", "<C-w>k", require("smart-splits").swap_buf_up)
 map("n", "<C-w>l", require("smart-splits").swap_buf_right)
 
--- mappings for moving between tabs
--- map("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Next tab", unique = true })
--- map("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab", unique = true })
-
 -- mappings for auto window size toggle
 map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Resize window right" })
 map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Resize window right" })
@@ -205,25 +201,23 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "(LSP) Go to next diagnostic p
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
 
 -- mappings for code navigations
-local hover = {
-	mapping = "K",
-	func = vim.lsp.buf.hover,
-	opts = { desc = "(LSP) Hover" },
-}
-map("n", hover.mapping, hover.func, hover.opts)
+map("n", "K", function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
+end, { desc = "(LSP & Fold) Hover" })
 map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
 map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
 map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
 map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
+map("n", "gl", "<cmd>Trouble lsp_document_symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
 map(
 	"n",
 	"<leader>gt",
 	"<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
 	{ desc = "(LSP) Go to type_definitions" }
 )
-
--- generate doxygen
-map("n", "<leader>dg", require("neogen").generate, { desc = "Generate doxygen" })
 
 -- mappings for undo tree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })
@@ -316,7 +310,11 @@ require("gitsigns").setup({
 
 -- mappings for formatting
 map("n", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this buffer" })
-map("v", "<leader>f", "<cmd>Format<cr>", { desc = "Format this selection" })
+map("v", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this selection" })
+
+-- mappings for folding
+map("n", "zO", require("ufo").openAllFolds, { desc = "Open All Folds" })
+map("n", "zC", require("ufo").closeAllFolds, { desc = "Close All Folds" })
 
 -- mappings for note-taking using Obsidian
 map("n", "<leader>no", "<cmd>Obsidian<cr>", { desc = "Open Obsidian" })

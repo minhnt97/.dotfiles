@@ -4,9 +4,13 @@ return {
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup({
+				numhl = true,
 				current_line_blame = true,
 				attach_to_untracked = true,
-				sign_priority = 90,
+				sign_priority = 6,
+				diff_opts = {
+					algorithm = "patience",
+				},
 				signs = {
 					delete = { text = "󰍵" },
 					changedelete = { text = "󱕖" },

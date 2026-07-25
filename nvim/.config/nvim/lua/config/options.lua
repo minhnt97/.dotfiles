@@ -21,3 +21,9 @@ vim.o.conceallevel = 2
 
 -- No adding end of file
 vim.cmd("set nofixendofline")
+
+-- Set fileformat to avoid weird displaying characters
+vim.cmd("set fileformats=unix,dos,mac")
+
+-- Set truecolor
+vim.o.termguicolors = true

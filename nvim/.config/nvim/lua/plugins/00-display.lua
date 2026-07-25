@@ -20,6 +20,9 @@ return {
 		"thesimonho/kanagawa-paper.nvim",
 		lazy = false,
 		priority = 1000,
+		init = function()
+			vim.cmd.colorscheme("kanagawa-paper-ink")
+		end,
 		config = function()
 			require("kanagawa-paper").setup({
 				dim_inactive = true,
@@ -64,19 +67,41 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch" },
-					lualine_c = {
+					lualine_b = {
 						{
 							require("noice").api.statusline.mode.get,
 							cond = require("noice").api.statusline.mode.has,
 						},
 						"selectioncount",
 					},
-					lualine_x = {
-						"lspstatus",
+					lualine_c = {
+						{
+							"filename",
+							filestatus = true,
+							newfile_status = true,
+							path = 1,
+							shorting_target = 80,
+						},
 					},
-					lualine_y = { "progress" },
-					lualine_z = { "location" },
+					lualine_x = { "lspstatus" },
+					lualine_y = {},
+					lualine_z = { "progress", "location" },
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = {
+						{
+							"filename",
+							filestatus = true,
+							newfile_status = true,
+							path = 0,
+							shorting_target = 80,
+						},
+					},
+					lualine_x = { "progress", "location" },
+					lualine_y = {},
+					lualine_z = {},
 				},
 			})
 		end,
@@ -103,8 +128,8 @@ return {
 			require("barbecue").setup({
 				create_autocmd = false, -- prevent barbecue from updating itself automatically
 				exclude_filetypes = { "netrw", "toggleterm", "diffview" },
-                show_dirname = false,
-                show_modified = true,
+				show_dirname = false,
+				show_modified = true,
 			})
 
 			vim.api.nvim_create_autocmd({
@@ -121,6 +146,17 @@ return {
 					require("barbecue.ui").update()
 				end,
 			})
+		end,
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		config = function()
+			vim.o.foldcolumn = "1"
+			vim.o.foldlevel = 99
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
+			require("ufo").setup({})
 		end,
 	},
 }

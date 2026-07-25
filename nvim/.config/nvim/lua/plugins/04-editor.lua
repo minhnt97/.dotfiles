@@ -14,7 +14,10 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {},
+		opts = {
+			at_edge = "stop",
+			cursor_follows_swapped_bufs = true,
+		},
 	},
 	{
 		-- auto resize windows with animation

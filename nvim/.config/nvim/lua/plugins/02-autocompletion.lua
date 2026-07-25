@@ -80,7 +80,7 @@ return {
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer", "cmdline" },
 				providers = {
 					cmdline = {
 						min_keyword_length = function(ctx)
@@ -95,6 +95,7 @@ return {
 			},
 
 			fuzzy = { implementation = "prefer_rust_with_warning" },
+			signature = { enabled = true },
 		},
 		opts_extend = { "sources.default" },
 	},
@@ -103,11 +104,5 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {},
-	},
-	{
-		"danymat/neogen",
-		config = true,
-		-- Uncomment next line if you want to follow only stable versions
-		-- version = "*"
 	},
 }

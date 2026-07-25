@@ -27,18 +27,39 @@ return {
 				ensure_installed = servers,
 			})
 
+			-- configure all LSPs
+			local capabilities = {
+				textDocument = {
+					semanticTokens = {
+						multilineTokenSupport = true,
+					},
+					foldingRange = {
+						dynamicRegistration = false,
+						lineFoldingOnly = true,
+					},
+				},
+			}
+
+			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
+
 			-- specific configuration
 			vim.lsp.config["clangd"] = {
 				settings = {
 					cmd = {
 						"clangd",
 						"--background-index",
+						"--offset-encoding=utf-8",
 						"--clang-tidy",
 						"--header-insertion=never",
 						"--limit-references=0",
 						"--limit-results=0",
 						"--rename-file-limit=0",
 					},
+					filetypes = { "c", "cpp" },
 				},
 			}
 
