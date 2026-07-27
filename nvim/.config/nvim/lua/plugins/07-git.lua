@@ -12,7 +12,7 @@ return {
 				attach_to_untracked = false,
 				sign_priority = 6,
 				diff_opts = {
-					algorithm = "histogram",
+					algorithm = "patience",
 				},
 				signs = {
 					delete = { text = "󰍵" },
