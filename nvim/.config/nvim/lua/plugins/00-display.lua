@@ -3,17 +3,31 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate",
+		run = ":TSUpdate",
 	},
 	{
 		"thesimonho/kanagawa-paper.nvim",
 		lazy = false,
-		priority = 1000,
+		run = 1000,
 		init = function()
 			vim.cmd.colorscheme("kanagawa-paper-ink")
 		end,
 		config = function()
 			require("kanagawa-paper").setup({
 				dim_inactive = true,
+				overrides = function(colors)
+					return {
+						-- use comment color
+						["@lsp.type.comment"] = { fg = colors.theme.syn.comment },
+
+						-- remove the strikethrough
+						DiffDelete = {
+							bg = colors.theme.diff.delete_light,
+							fg = colors.theme.vcs.removed,
+							strikethrough = false,
+						},
+					}
+				end,
 			})
 		end,
 	},
@@ -41,7 +55,7 @@ return {
 				config = function()
 					require("nvim-navic").setup({
 						highlight = true,
-						depth_limit = 0,
+						depth_limit = 2,
 						lsp = {
 							auto_attach = true,
 						},
