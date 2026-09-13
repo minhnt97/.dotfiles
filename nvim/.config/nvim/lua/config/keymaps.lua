@@ -211,7 +211,7 @@ map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LS
 map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
 map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
 map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
-map("n", "gl", "<cmd>Trouble lsp_document_symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
+map("n", "gl", "<cmd>Trouble symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
 map(
 	"n",
 	"<leader>gt",

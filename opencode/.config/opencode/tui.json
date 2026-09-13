@@ -45,7 +45,7 @@
     "model_cycle_favorite": "none",
     "model_cycle_favorite_reverse": "none",
     "variant_cycle": "<leader>v",
-    "command_list": "none",
+    "command_list": "<leader>p",
     "agent_list": "none",
     "agent_cycle": "tab",
     "agent_cycle_reverse": "shift+tab",

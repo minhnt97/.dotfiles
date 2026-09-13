@@ -43,7 +43,25 @@ return {
 		opts = {
 			auto_refresh = false, -- auto refresh when open
 			auto_close = true, -- auto close when there are no items
-			auto_jump = true, -- auto jump to the item when there's only one
+			auto_jump = false, -- auto jump to the item when there's only one
+			win = {
+
+				type = "split",
+				relative = "win",
+				position = "bottom",
+				size = 0.2,
+			},
+			preview = {
+				type = "float",
+				relative = "editor",
+				size = {
+					height = 0.4,
+					width = 0.9,
+				},
+				border = "rounded",
+				scratch = false,
+				focusable = true,
+			},
 			keys = {
 				J = "next",
 				K = "prev",

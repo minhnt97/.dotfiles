@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='mvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -92,6 +93,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias c='clear'
+alias copy='xclip -selection clipboard'
+alias gs='git status'
 
 # integrate fzf for command line history
 source <(fzf --zsh)
