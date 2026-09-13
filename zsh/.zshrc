@@ -95,6 +95,7 @@ export EDITOR='mvim'
 alias c='clear'
 alias copy='xclip -selection clipboard'
 alias gs='git status'
+alias lg='lazygit'
 
 # integrate fzf for command line history
 source <(fzf --zsh)
