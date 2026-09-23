@@ -82,7 +82,7 @@ return {
 							"filename",
 							filestatus = true,
 							newfile_status = true,
-							path = 0,
+							path = 1,
 							shorting_target = 80,
 						},
 						{

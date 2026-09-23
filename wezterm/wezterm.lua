@@ -126,7 +126,33 @@ config.keys = {
 	{
 		key = "w",
 		mods = "LEADER",
-		action = act.ShowTabNavigator,
+		action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	},
+
+	{
+		key = "$",
+		mods = "LEADER|SHIFT",
+		action = act.PromptInputLine({
+			description = "Enter new name for this workspace",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(window:mux_window():get_workspace(), line)
+				end
+			end),
+		}),
+	},
+
+	{
+		key = "W",
+		mods = "LEADER|SHIFT",
+		action = act.PromptInputLine({
+			description = "Enter name for new workspace",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line and #line > 0 then
+					wezterm.perform_action(act.SwitchToWorkspace({ name = line }), pane)
+				end
+			end),
+		}),
 	},
 
 	{

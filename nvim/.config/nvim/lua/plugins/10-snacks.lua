@@ -53,7 +53,7 @@ return {
 				-- patterns to match Git signs
 				patterns = { "GitSign", "MiniDiffSign" },
 			},
-			refresh = 500, -- refresh at most every 50ms
+			refresh = 50, -- refresh at most every 50ms
 		},
 	},
 	keys = {},

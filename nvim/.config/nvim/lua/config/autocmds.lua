@@ -1,38 +1,13 @@
 -- automatically open starts treesitter
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"c",
-		"cpp",
-		"comment",
-		"csv",
-		"devicetree",
-		"diff",
-		"doxygen",
-		"python",
-		"markdown",
-		"markdown_inline",
-		"gitcommit",
-		"git_rebase",
-		"gitignore",
-		"cmake",
-		"make",
-		"xml",
-		"html",
-		"lua",
-		"bash",
-		"powershell",
-		"json",
-		"kconfig",
-		"latex",
-		"ninja",
-		"mermaid",
-		"objc",
-		"objdump",
-	},
-	callback = function()
-		vim.treesitter.start()
-		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- folds
-		vim.wo.foldmethod = "expr"
+	pattern = "*",
+	callback = function(args)
+		local ft = args.match
+		local lang = vim.treesitter.language.get_lang(ft) or ft
+		if not pcall(vim.treesitter.language.add, lang) then
+			return
+		end
+		pcall(vim.treesitter.start, args.buf, lang)
 	end,
 })
 
