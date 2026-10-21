@@ -160,34 +160,6 @@ map("n", "<leader>uC", function()
 end, { desc = "Colorschemes" })
 
 -- LSP pickers
-map("n", "gd", function()
-	Snacks.picker.lsp_definitions()
-end, { desc = "LSP Go to definitions" })
-
-map("n", "gD", function()
-	Snacks.picker.lsp_declarations()
-end, { desc = "LSP Go to declaration" })
-
-map("n", "gr", function()
-	Snacks.picker.lsp_references()
-end, { desc = "LSP Go to declaration", nowait = true })
-
-map("n", "gI", function()
-	Snacks.picker.lsp_implementations()
-end, { desc = "LSP Go to implementations" })
-
-map("n", "gy", function()
-	Snacks.picker.lsp_type_definitions()
-end, { desc = "LSP Go to t[y]pe definition" })
-
-map("n", "gai", function()
-	Snacks.picker.lsp_incoming_calls()
-end, { desc = "LSP C[a]lls incoming" })
-
-map("n", "gao", function()
-	Snacks.picker.lsp_outgoing_calls()
-end, { desc = "LSP C[a]lls outgoing" })
-
 map("n", "<leader>ss", function()
 	Snacks.picker.lsp_symbols()
 end, { desc = "LSP Symbols" })
@@ -255,17 +227,13 @@ map("n", "K", function()
 		vim.lsp.buf.hover()
 	end
 end, { desc = "(LSP & Fold) Hover" })
--- map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
--- map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
--- map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
--- map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
--- map("n", "gl", "<cmd>Trouble symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
--- map(
--- 	"n",
--- 	"<leader>gt",
--- 	"<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
--- 	{ desc = "(LSP) Go to type_definitions" }
--- )
+map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
+map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
+map("n", "gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references", nowait = true })
+map("n", "gI", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
+map("n", "gY", "<cmd>Trouble lsp_type_definitions toggle focus=true<CR>", { desc = "(LSP) Go to t[y]pe definitions" })
+map("n", "gai",  "<cmd>Trouble lsp_incoming_calls toggle focus=true<CR>", { desc = "LSP C[a]lls incoming" })
+map("n", "gao",  "<cmd>Trouble lsp_outgoinq_calls toggle focus=true<CR>", { desc = "LSP C[a]lls outgoing" })
 
 -- mappings for undo tree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })
