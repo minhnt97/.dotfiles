@@ -6,6 +6,12 @@ local map = function(mode, lhs, rhs, opts)
 end
 
 -- mappings for moving between splits
+for key, fn in pairs({ h = "move_cursor_left", j = "move_cursor_down", k = "move_cursor_up", l = "move_cursor_right" }) do
+	map("t", "<C-" .. key .. ">", function()
+		require("smart-splits")[fn]()
+	end)
+end
+
 map("n", "<C-h>", require("smart-splits").move_cursor_left)
 map("n", "<C-j>", require("smart-splits").move_cursor_down)
 map("n", "<C-k>", require("smart-splits").move_cursor_up)
@@ -23,6 +29,10 @@ map("n", "<C-w>j", require("smart-splits").swap_buf_down)
 map("n", "<C-w>k", require("smart-splits").swap_buf_up)
 map("n", "<C-w>l", require("smart-splits").swap_buf_right)
 
+-- mappings for tab switching
+map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
+map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+
 -- mappings for auto window size toggle
 map("n", "<C-w>z", "<cmd>WindowsMaximize<cr>", { desc = "Resize window right" })
 map("n", "<C-w>=", "<cmd>WindowsEqualize<cr>", { desc = "Resize window right" })
@@ -38,6 +48,14 @@ map("n", "<leader><space>", function()
 	Snacks.picker.smart()
 end, { desc = "Smart Find Files" })
 
+map("n", "<leader>r", function()
+	Snacks.picker.resume()
+end, { desc = "Resume Last Picker" })
+
+map("n", "<leader>,", function()
+	Snacks.picker.buffers()
+end, { desc = "Buffers" })
+
 map("n", "<leader>/", function()
 	Snacks.picker.lines()
 end, { desc = "Buffer Lines" })
@@ -45,6 +63,10 @@ end, { desc = "Buffer Lines" })
 map("n", "<leader>:", function()
 	Snacks.picker.command_history()
 end, { desc = "Command History" })
+
+map("n", "<leader>n", function()
+	Snacks.picker.notifications()
+end, { desc = "Notification History" })
 
 -- Find
 map("n", "<leader>fb", function()
@@ -138,6 +160,34 @@ map("n", "<leader>uC", function()
 end, { desc = "Colorschemes" })
 
 -- LSP pickers
+map("n", "gd", function()
+	Snacks.picker.lsp_definitions()
+end, { desc = "LSP Go to definitions" })
+
+map("n", "gD", function()
+	Snacks.picker.lsp_declarations()
+end, { desc = "LSP Go to declaration" })
+
+map("n", "gr", function()
+	Snacks.picker.lsp_references()
+end, { desc = "LSP Go to declaration", nowait = true })
+
+map("n", "gI", function()
+	Snacks.picker.lsp_implementations()
+end, { desc = "LSP Go to implementations" })
+
+map("n", "gy", function()
+	Snacks.picker.lsp_type_definitions()
+end, { desc = "LSP Go to t[y]pe definition" })
+
+map("n", "gai", function()
+	Snacks.picker.lsp_incoming_calls()
+end, { desc = "LSP C[a]lls incoming" })
+
+map("n", "gao", function()
+	Snacks.picker.lsp_outgoing_calls()
+end, { desc = "LSP C[a]lls outgoing" })
+
 map("n", "<leader>ss", function()
 	Snacks.picker.lsp_symbols()
 end, { desc = "LSP Symbols" })
@@ -195,8 +245,6 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "(LSP) Rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "(LSP) Code actions" })
 
 -- mappings for diagnostics
-map("n", "<leader>ge", "<cmd>Trouble diagnostics toggle toggle focus=true<CR>", { desc = "Diagnostics (Trouble)" })
-map("n", "<leader>gE", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "(LSP) Go to next diagnostic position" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "(LSP) Go to prev diagnostic position" })
 
@@ -207,17 +255,17 @@ map("n", "K", function()
 		vim.lsp.buf.hover()
 	end
 end, { desc = "(LSP & Fold) Hover" })
-map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
-map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
-map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
-map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
-map("n", "gl", "<cmd>Trouble symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
-map(
-	"n",
-	"<leader>gt",
-	"<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
-	{ desc = "(LSP) Go to type_definitions" }
-)
+-- map("n", "gd", "<cmd>Trouble lsp_definitions open focus=true<CR>", { desc = "(LSP) Go to definitions" })
+-- map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(LSP) Go to declaration" })
+-- map("n", "<leader>gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references" })
+-- map("n", "gi", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
+-- map("n", "gl", "<cmd>Trouble symbols open focus=true<CR>", { desc = "(LSP) Open document symbols" })
+-- map(
+-- 	"n",
+-- 	"<leader>gt",
+-- 	"<cmd>Trouble lsp_type_definitions toggle focus=true<CR>",
+-- 	{ desc = "(LSP) Go to type_definitions" }
+-- )
 
 -- mappings for undo tree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })
@@ -253,8 +301,5 @@ map("v", "<leader>gf", "<cmd>Format<cr>", { desc = "Format this selection" })
 map("n", "zO", require("ufo").openAllFolds, { desc = "Open All Folds" })
 map("n", "zC", require("ufo").closeAllFolds, { desc = "Close All Folds" })
 
--- mappings for note-taking using Obsidian
-map("n", "<leader>no", "<cmd>Obsidian<cr>", { desc = "Open Obsidian" })
-map("n", "<leader>nn", "<cmd>Obsidian new<cr>", { desc = "New Obsidian Note" })
-map("n", "<leader>nt", "<cmd>Obsidian tags<cr>", { desc = "Search Obsidian Tags" })
-map("n", "<leader>ns", "<cmd>Obsidian search<cr>", { desc = "Search Obsidian Contents" })
+-- mappings to exit terminal mode
+map("t", "<C-q>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

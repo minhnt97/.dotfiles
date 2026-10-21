@@ -86,10 +86,30 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim" },
 		cmd = "CodeDiff",
 		opts = {
-			-- Explorer panel configuration
+			diff = {
+				compact = true,
+				compact_context_line = 5,
+			},
 			explorer = {
-				position = "bottom", -- "left" or "bottom"
-				height = 10, -- Height when position is "bottom" (lines)
+				position = "left",
+				width = 40,
+				view_mode = "tree",
+				line_stats = {
+					enabled = true,
+					count_untracked = true,
+				},
+			},
+			history = {
+				view_mode = "tree",
+				position = "left",
+				width = 40,
+			},
+			keymaps = {
+
+				view = {
+					next_hunk = "<C-n>",
+					prev_hunk = "<C-p>",
+				},
 			},
 		},
 	},

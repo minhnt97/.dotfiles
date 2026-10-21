@@ -1,3 +1,14 @@
+local function scoll_preview(keys)
+	return function()
+		local p = require("trouble.view.preview").preview
+		if p and vim.api.nvim_win_is_valid(p.win) then
+			vim.api.nvim_win_call(p.win, function()
+				vim.cmd("normal! " .. keys)
+			end)
+		end
+	end
+end
+
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -49,26 +60,31 @@ return {
 			auto_close = true, -- auto close when there are no items
 			auto_jump = false, -- auto jump to the item when there's only one
 			win = {
-
-				type = "split",
-				relative = "win",
-				position = "bottom",
-				size = 0.2,
+				type = "float",
+				relative = "editor",
+				position = { 0.5, 0 },
+				border = "rounded",
+				size = { height = 0.6, width = 0.5 },
+				focusable = true,
 			},
 			preview = {
 				type = "float",
 				relative = "editor",
-				size = {
-					height = 0.4,
-					width = 0.9,
-				},
+				position = { 0.5, 1 },
 				border = "rounded",
-				scratch = false,
-				focusable = true,
+				size = {
+					height = 0.6,
+					width = 0.5,
+				},
+				scratch = true,
 			},
 			keys = {
 				J = "next",
 				K = "prev",
+				["<c-d>"] = scoll_preview("\4"),
+				["<c-u>"] = scoll_preview("\21"),
+				["<c-e>"] = scoll_preview("\5"),
+				["<c-y>"] = scoll_preview("\25"),
 			},
 			modes = {
 				lsp_references = {

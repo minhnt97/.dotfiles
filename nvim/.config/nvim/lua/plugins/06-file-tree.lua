@@ -45,6 +45,13 @@ return {
 					["gs"] = { "actions.change_sort", mode = "n" },
 					["gx"] = "actions.open_external",
 					["g."] = { "actions.toggle_hidden", mode = "n" },
+					["gh"] = {
+						desc = "Go to home directory",
+						callback = function()
+							require("oil").open(vim.fn.expand("~"))
+						end,
+						mode = "n",
+					},
 					["g\\"] = { "actions.toggle_trash", mode = "n" },
 				},
 				win_options = {

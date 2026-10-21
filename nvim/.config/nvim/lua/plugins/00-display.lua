@@ -98,7 +98,7 @@ return {
 							navic_opts = nil, -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
 						},
 					},
-					lualine_x = { "lspstatus" },
+					lualine_x = { "lspstatus", require("opencode").statusline },
 					lualine_y = {},
 					lualine_z = { "progress", "location" },
 				},
