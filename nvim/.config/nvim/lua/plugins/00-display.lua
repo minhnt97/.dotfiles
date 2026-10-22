@@ -6,29 +6,13 @@ return {
 		run = ":TSUpdate",
 	},
 	{
-		"thesimonho/kanagawa-paper.nvim",
+		"oxidescheme/nvim",
+		name = "oxide",
 		lazy = false,
 		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("kanagawa-paper-ink")
-		end,
 		config = function()
-			require("kanagawa-paper").setup({
-				dim_inactive = true,
-				overrides = function(colors)
-					return {
-						-- use comment color
-						["@lsp.type.comment"] = { fg = colors.theme.syn.comment },
-
-						-- remove the strikethrough
-						DiffDelete = {
-							bg = colors.theme.diff.delete_light,
-							fg = colors.theme.vcs.removed,
-							strikethrough = false,
-						},
-					}
-				end,
-			})
+			require("oxide").setup()
+			vim.cmd.colorscheme("oxide")
 		end,
 	},
 	{
