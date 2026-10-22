@@ -16,12 +16,20 @@ return {
 		},
 		picker = {
 			enabled = true,
+			formatters = {
+				file = {
+					filename_first = true, -- display filename before the file path
+					---@type "left"|"center"|"right"
+					truncate = "left",
+					min_width = 20, -- minimum length of the truncated path
+				},
+			},
 			layout = {
-				cycle = true,
-				--- Use the default layout or vertical if the window is too narrow
-				preset = function()
-					return vim.o.columns >= 160 and "default" or "vertical"
-				end,
+				preset = "select",
+				layout = {
+					width = 0.8,
+					max_width = 500,
+				},
 			},
 			matcher = {
 				frecency = true,

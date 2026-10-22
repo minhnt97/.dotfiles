@@ -232,8 +232,8 @@ map("n", "gD", "<cmd>Trouble lsp_declarations open focus=true<CR>", { desc = "(L
 map("n", "gr", "<cmd>Trouble lsp_references open focus=true<CR>", { desc = "(LSP) Go to references", nowait = true })
 map("n", "gI", "<cmd>Trouble lsp_implementations open focus=true<CR>", { desc = "(LSP) Go to implementations" })
 map("n", "gY", "<cmd>Trouble lsp_type_definitions toggle focus=true<CR>", { desc = "(LSP) Go to t[y]pe definitions" })
-map("n", "gai",  "<cmd>Trouble lsp_incoming_calls toggle focus=true<CR>", { desc = "LSP C[a]lls incoming" })
-map("n", "gao",  "<cmd>Trouble lsp_outgoinq_calls toggle focus=true<CR>", { desc = "LSP C[a]lls outgoing" })
+map("n", "gai", "<cmd>Trouble lsp_incoming_calls toggle focus=true<CR>", { desc = "LSP C[a]lls incoming" })
+map("n", "gao", "<cmd>Trouble lsp_outgoinq_calls toggle focus=true<CR>", { desc = "LSP C[a]lls outgoing" })
 
 -- mappings for undo tree
 map("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Resize window right" })

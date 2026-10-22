@@ -7,6 +7,9 @@ vim.cmd("set shiftwidth=4")
 -- Show line number
 vim.cmd("set number relativenumber")
 
+-- Wider status column with blank space
+vim.o.signcolumn = "yes:3"
+
 -- Ignore case
 vim.cmd("set ignorecase")
 
