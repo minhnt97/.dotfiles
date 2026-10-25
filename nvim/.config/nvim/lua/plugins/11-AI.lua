@@ -44,7 +44,7 @@ return {
 			{
 				"<leader>og",
 				function()
-					return require("opencode").operator("@this")
+					return require("opencode").operator("@this ")
 				end,
 				mode = { "n", "x" },
 				expr = true,
@@ -53,7 +53,7 @@ return {
 			{
 				"<leader>ol",
 				function()
-					return require("opencode").operator("@this") .. "_"
+					return require("opencode").operator("@this ") .. "_"
 				end,
 				mode = "n",
 				expr = true,

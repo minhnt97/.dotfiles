@@ -6,12 +6,6 @@ local map = function(mode, lhs, rhs, opts)
 end
 
 -- mappings for moving between splits
-for key, fn in pairs({ h = "move_cursor_left", j = "move_cursor_down", k = "move_cursor_up", l = "move_cursor_right" }) do
-	map("t", "<C-" .. key .. ">", function()
-		require("smart-splits")[fn]()
-	end)
-end
-
 map("n", "<C-h>", require("smart-splits").move_cursor_left)
 map("n", "<C-j>", require("smart-splits").move_cursor_down)
 map("n", "<C-k>", require("smart-splits").move_cursor_up)
