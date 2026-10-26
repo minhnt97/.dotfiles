@@ -89,11 +89,14 @@ return {
 			diff = {
 				compact = true,
 				compact_context_line = 5,
+				filler_text = "",
+				compute_moves = true,
 			},
 			explorer = {
 				position = "left",
 				width = 40,
 				view_mode = "tree",
+				untracked = "normal",
 				line_stats = {
 					enabled = true,
 					count_untracked = true,
