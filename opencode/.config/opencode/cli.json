@@ -17,7 +17,7 @@
     "session.list": "none",
     "session.tab.next": "none",
     "session.tab.previous": "none",
-    "open.menu": "none",
+    "open.menu": "<leader>o",
     "session.timeline": "none",
     "session.fork": "none",
     "session.rename": "none",

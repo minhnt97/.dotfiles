@@ -1,4 +1,4 @@
-local opencode_cmd = { "opencode", "--port" }
+local opencode_cmd = { "opencode" }
 
 local function opencode_terminal_opts(enter)
 	return {
@@ -13,9 +13,6 @@ end
 return {
 	{
 		"nickjvandyke/opencode.nvim",
-		-- Defaults to "main", supporting OpenCode v2.
-		-- Uncomment to pull the latest stable release, supporting OpenCode v1.
-		version = "*",
 		keys = {
 			{
 				"<leader>ot",
@@ -61,10 +58,11 @@ return {
 			},
 		},
 		config = function()
+			---@type opencode.Opts
 			vim.g.opencode_opts = {
 				server = {
 					start = function()
-						term = require("snacks.terminal").open(opencode_cmd, opencode_terminal_opts(false))
+						require("snacks.terminal").open(opencode_cmd, opencode_terminal_opts(false))
 					end,
 				},
 			}
