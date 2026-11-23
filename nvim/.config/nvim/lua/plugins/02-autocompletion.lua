@@ -83,6 +83,7 @@ return {
 				default = { "lsp", "snippets", "path", "cmdline", "buffer" },
 				providers = {
 					cmdline = {},
+					lsp = { fallbacks = {} },
 				},
 			},
 
