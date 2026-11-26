@@ -11,11 +11,14 @@ return {
 		opts = {},
 	},
 	{
-  'smart-splits-nvim/smart-splits.nvim',
-  version = '^3.0.0',
-  opts = {
+		"smart-splits-nvim/smart-splits.nvim",
+		version = "^3.0.0",
+		opts = {
 			mux = {
-				backend = "smart-splits-backend-wezterm",
+				backend = {
+					"smart-splits-backend-tmux",
+					"smart-splits-backend-wezterm",
+				},
 			},
 			move = {
 				at_edge = "stop",
@@ -32,6 +35,10 @@ return {
 					-- never on any hot path (see "How it works")
 					cli_path = "wezterm",
 				},
+			},
+			{
+				"smart-splits-nvim/backend-tmux",
+				main = "smart-splits-backend-tmux",
 			},
 		},
 	},
