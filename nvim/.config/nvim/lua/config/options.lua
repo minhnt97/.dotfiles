@@ -30,3 +30,6 @@ vim.cmd("set fileformats=unix,dos,mac")
 
 -- Set truecolor
 vim.o.termguicolors = true
+
+-- Rounded borders for floating windows by default
+vim.o.winborder = "rounded"

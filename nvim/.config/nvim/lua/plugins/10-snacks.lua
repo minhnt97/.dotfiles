@@ -121,7 +121,20 @@ return {
 			},
 			sources = (function()
 				local sources = {}
-				for _, name in ipairs({ "files", "git_files", "recent", "buffers", "smart", "projects" }) do
+				-- file / command pickers: quick lists without preview
+				for _, name in ipairs({
+					"files",
+					"git_files",
+					"git_status",
+					"recent",
+					"buffers",
+					"smart",
+					"projects",
+					"zoxide",
+					"commands",
+					"command_history",
+					"search_history",
+				}) do
 					sources[name] = { layout = vscode }
 				end
 				for _, name in ipairs({
