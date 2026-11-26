@@ -115,7 +115,7 @@ return {
 				input = {
 					keys = {
 						["<c-x>"] = { "edit_split", mode = { "i", "n" } },
-						["<a-v>"] = { "toggle_layout", mode = { "i", "n" } },
+						["<c-t>"] = { "toggle_layout", mode = { "i", "n" } },
 					},
 				},
 			},
