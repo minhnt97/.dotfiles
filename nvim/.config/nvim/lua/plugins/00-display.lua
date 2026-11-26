@@ -13,6 +13,7 @@ return {
 		config = function()
 			require("oxide").setup()
 			vim.cmd.colorscheme("oxide")
+			vim.api.nvim_set_hl(0, "DiffText", { fg = "#161616", bg = "#3ba6f5" })
 		end,
 	},
 	{
@@ -82,11 +83,7 @@ return {
 							navic_opts = nil, -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
 						},
 					},
-					lualine_x = { "lspstatus", function()
-						-- avoid loading opencode.nvim until it is actually used
-						local oc = package.loaded["opencode"]
-						return oc and oc.statusline() or ""
-					end },
+					lualine_x = { "lspstatus" },
 					lualine_y = {},
 					lualine_z = { "progress", "location" },
 				},

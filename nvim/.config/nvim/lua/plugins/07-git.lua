@@ -109,7 +109,6 @@ return {
 				width = 40,
 			},
 			keymaps = {
-
 				view = {
 					next_hunk = "<C-n>",
 					prev_hunk = "<C-p>",
