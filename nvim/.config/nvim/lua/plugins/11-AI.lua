@@ -13,6 +13,8 @@ end
 return {
 	{
 		"nickjvandyke/opencode.nvim",
+		lazy = true,
+		cmd = "Opencode",
 		keys = {
 			{
 				"<leader>ot",
@@ -67,5 +69,15 @@ return {
 				},
 			}
 		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			-- suggestions are served through blink.cmp (blink-copilot)
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+		},
 	},
 }

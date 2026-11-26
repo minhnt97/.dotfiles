@@ -1,6 +1,7 @@
 return {
 	{
 		"arnamak/stay-centered.nvim",
+		event = "VeryLazy",
 	},
 	{
 		-- edit surrounding symbols
@@ -22,6 +23,7 @@ return {
 	{
 		-- auto resize windows with animation
 		"anuvyklack/windows.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"anuvyklack/middleclass",
 			"anuvyklack/animation.nvim",
@@ -36,6 +38,7 @@ return {
 	{
 		-- undo tree
 		"mbbill/undotree",
+		cmd = "UndotreeToggle",
 		config = function()
 			vim.g.undotree_WindowLayout = 2
 			vim.g.undotree_SetFocusWhenToggle = 1
@@ -50,11 +53,13 @@ return {
 	{
 		-- commenting codes
 		"numToStr/Comment.nvim",
+		event = "VeryLazy",
 		config = true,
 	},
 	{
 		"toppair/peek.nvim",
-		event = { "VeryLazy" },
+		ft = "markdown",
+		cmd = { "PeekOpen", "PeekClose" },
 		build = "deno task --quiet build:fast",
 		config = function()
 			require("peek").setup({

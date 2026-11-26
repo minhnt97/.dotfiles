@@ -1,6 +1,7 @@
 return {
 	{
 		"klen/nvim-config-local",
+		event = "VimEnter",
 		config = function()
 			require("config-local").setup({
 				-- Default options (optional)

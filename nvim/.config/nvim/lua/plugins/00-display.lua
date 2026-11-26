@@ -82,7 +82,11 @@ return {
 							navic_opts = nil, -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
 						},
 					},
-					lualine_x = { "lspstatus", require("opencode").statusline },
+					lualine_x = { "lspstatus", function()
+						-- avoid loading opencode.nvim until it is actually used
+						local oc = package.loaded["opencode"]
+						return oc and oc.statusline() or ""
+					end },
 					lualine_y = {},
 					lualine_z = { "progress", "location" },
 				},
@@ -108,12 +112,14 @@ return {
 	{
 		-- auto hightlights same word under cursor
 		"RRethy/vim-illuminate",
+		event = "BufReadPost",
 		config = function()
 			require("illuminate").configure({})
 		end,
 	},
 	{
 		"kevinhwang91/nvim-ufo",
+		event = "BufReadPost",
 		dependencies = "kevinhwang91/promise-async",
 		config = function()
 			vim.o.foldcolumn = "1"

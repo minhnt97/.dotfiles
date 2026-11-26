@@ -10,10 +10,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(vim.treesitter.start, args.buf, lang)
 	end,
 })
-
--- automatically open trouble quickfix
-vim.api.nvim_create_autocmd("QuickFixCmdPost", {
-	callback = function()
-		vim.cmd([[Trouble qflist open]])
-	end,
-})

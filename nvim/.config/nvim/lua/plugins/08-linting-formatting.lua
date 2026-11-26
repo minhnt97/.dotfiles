@@ -1,6 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
+		cmd = { "Format", "ConformInfo" },
 		config = function()
 			local conform = require("conform")
 			-- async formatting

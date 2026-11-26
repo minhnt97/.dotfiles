@@ -53,6 +53,7 @@ return {
 						mode = "n",
 					},
 					["g\\"] = { "actions.toggle_trash", mode = "n" },
+					["gy"] = { "actions.yank_entry", mode = "n", desc = "Yank absolute path of entry" },
 				},
 				win_options = {
 					winbar = "%!v:lua.get_oil_winbar()",

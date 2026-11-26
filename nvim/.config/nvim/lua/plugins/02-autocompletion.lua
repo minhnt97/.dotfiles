@@ -7,6 +7,7 @@ return {
 			"xzbdmw/colorful-menu.nvim", --extending label
 			"nvim-tree/nvim-web-devicons", --icons
 			"onsails/lspkind.nvim", --icons
+			{ "fang2hou/blink-copilot", dependencies = "zbirenbaum/copilot.lua" }, --copilot source
 		},
 
 		-- use a release tag to download pre-built binaries
@@ -29,6 +30,7 @@ return {
 
 			completion = {
 				menu = {
+					border = "rounded",
 					draw = {
 						-- We don't need label_description now because label and label_description are already
 						-- combined together in label by colorful-menu.nvim.
@@ -76,19 +78,25 @@ return {
 				},
 				ghost_text = { enabled = true },
 				list = { selection = { preselect = false } },
-				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+				documentation = { auto_show = true, auto_show_delay_ms = 500, window = { border = "rounded" } },
 			},
 
 			sources = {
-				default = { "lsp", "snippets", "path", "cmdline", "buffer" },
+				default = { "lsp", "snippets", "path", "cmdline", "buffer", "copilot" },
 				providers = {
 					cmdline = {},
 					lsp = { fallbacks = {} },
+					copilot = {
+						name = "copilot",
+						module = "blink-copilot",
+						score_offset = 100,
+						async = true,
+					},
 				},
 			},
 
 			fuzzy = { implementation = "prefer_rust_with_warning" },
-			signature = { enabled = true },
+			signature = { enabled = true, window = { border = "rounded" } },
 		},
 		opts_extend = { "sources.default" },
 	},
