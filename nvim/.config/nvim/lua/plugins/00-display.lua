@@ -11,9 +11,12 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("oxide").setup()
+			require("oxide").setup({
+				on_highlights = function(highlights, colors)
+					highlights.DiffText = { fg = "#cecece", bg = "#354e35" }
+				end,
+			})
 			vim.cmd.colorscheme("oxide")
-			vim.api.nvim_set_hl(0, "DiffText", { fg = "#161616", bg = "#3ba6f5" })
 		end,
 	},
 	{
@@ -52,6 +55,8 @@ return {
 			require("lualine").setup({
 				options = {
 					theme = "auto",
+					section_separators = "",
+					component_separators = "",
 				},
 				sections = {
 					lualine_a = { "mode" },
@@ -67,7 +72,7 @@ return {
 							"filename",
 							filestatus = true,
 							newfile_status = true,
-							path = 1,
+							path = 0,
 							shorting_target = 80,
 						},
 						{
