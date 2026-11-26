@@ -11,13 +11,28 @@ return {
 		opts = {},
 	},
 	{
-		-- manual sane window resize & move between panes
-		"mrjones2014/smart-splits.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			at_edge = "stop",
-			cursor_follows_swapped_bufs = true,
+  'smart-splits-nvim/smart-splits.nvim',
+  version = '^3.0.0',
+  opts = {
+			mux = {
+				backend = "smart-splits-backend-wezterm",
+			},
+			move = {
+				at_edge = "stop",
+			},
+			swap = {
+				move_cursor = false,
+			},
+		},
+		dependencies = {
+			{
+				"smart-splits-nvim/backend-wezterm",
+				opts = {
+					-- name/path of the wezterm binary; used only by :checkhealth's diagnostic version probe,
+					-- never on any hot path (see "How it works")
+					cli_path = "wezterm",
+				},
+			},
 		},
 	},
 	{
